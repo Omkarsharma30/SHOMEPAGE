@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="text-center mb-0">QR Code Generator</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-section p-3">
+                                    <h3>Input Data</h3>
+                                    <div class="mb-3">
+                                        <label for="dataType" class="form-label">Select Data Type</label>
+                                        <select id="dataType" class="form-select">
+                                            <option value="text">Text</option>
+                                            <option value="url">URL</option>
+                                            <option value="email">Email</option>
+                                            <option value="phone">Phone Number</option>
+                                            <option value="sms">SMS</option>
+                                            <option value="wifi">WiFi Network</option>
+                                            <option value="vcard">vCard (Contact)</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Text Input Fields (Default) -->
+                                    <div id="textField" class="input-field">
+                                        <div class="mb-3">
+                                            <label for="textInput" class="form-label">Enter Text</label>
+                                            <textarea id="textInput" class="form-control" rows="3" placeholder="Enter your text here"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- URL Input Fields -->
+                                    <div id="urlField" class="input-field d-none">
+                                        <div class="mb-3">
+                                            <label for="urlInput" class="form-label">Enter URL</label>
+                                            <input type="url" id="urlInput" class="form-control" placeholder="https://example.com">
+                                        </div>
+                                    </div>
+
+                                    <!-- Email Input Fields -->
+                                    <div id="emailField" class="input-field d-none">
+                                        <div class="mb-3">
+                                            <label for="emailInput" class="form-label">Email Address</label>
+                                            <input type="email" id="emailInput" class="form-control" placeholder="example@email.com">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="emailSubject" class="form-label">Subject (Optional)</label>
+                                            <input type="text" id="emailSubject" class="form-control" placeholder="Email Subject">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="emailBody" class="form-label">Body (Optional)</label>
+                                            <textarea id="emailBody" class="form-control" rows="2" placeholder="Email Body"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- Phone Input Fields -->
+                                    <div id="phoneField" class="input-field d-none">
+                                        <div class="mb-3">
+                                            <label for="phoneInput" class="form-label">Phone Number</label>
+                                            <input type="tel" id="phoneInput" class="form-control" placeholder="+1234567890">
+                                        </div>
+                                    </div>
+
+                                    <!-- SMS Input Fields -->
+                                    <div id="smsField" class="input-field d-none">
+                                        <div class="mb-3">
+                                            <label for="smsNumber" class="form-label">Phone Number</label>
+                                            <input type="tel" id="smsNumber" class="form-control" placeholder="+1234567890">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="smsMessage" class="form-label">Message</label>
+                                            <textarea id="smsMessage" class="form-control" rows="2" placeholder="Your SMS message"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- WiFi Input Fields -->
+                                    <div id="wifiField" class="input-field d-none">
+                                        <div class="mb-3">
+                                            <label for="wifiSsid" class="form-label">Network Name (SSID)</label>
+                                            <input type="text" id="wifiSsid" class="form-control" placeholder="Network Name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="wifiType" class="form-label">Security Type</label>
+                                            <select id="wifiType" class="form-select">
+                                                <option value="WPA">WPA/WPA2</option>
+                                                <option value="WEP">WEP</option>
+                                                <option value="nopass">No Password</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="wifiPassword" class="form-label">Password</label>
+                                            <input type="password" id="wifiPassword" class="form-control" placeholder="Network Password">
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" value="" id="wifiHidden">
+                                            <label class="form-check-label" for="wifiHidden">
+                                                Hidden Network
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- vCard Input Fields -->
+                                    <div id="vcardField" class="input-field d-none">
+                                        <div class="mb-3">
+                                            <label for="vcardFirstName" class="form-label">First Name</label>
+                                            <input type="text" id="vcardFirstName" class="form-control" placeholder="First Name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="vcardLastName" class="form-label">Last Name</label>
+                                            <input type="text" id="vcardLastName" class="form-control" placeholder="Last Name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="vcardPhone" class="form-label">Phone</label>
+                                            <input type="tel" id="vcardPhone" class="form-control" placeholder="Phone Number">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="vcardEmail" class="form-label">Email</label>
+                                            <input type="email" id="vcardEmail" class="form-control" placeholder="Email">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="vcardOrg" class="form-label">Organization (Optional)</label>
+                                            <input type="text" id="vcardOrg" class="form-control" placeholder="Organization">
+                                        </div>
+                                    </div>
+
+                                    <!-- QR Code Settings -->
+                                    <div class="qr-settings mt-4">
+                                        <h4>QR Code Settings</h4>
+                                        <div class="mb-3">
+                                            <label for="qrSize" class="form-label">Size</label>
+                                            <input type="range" class="form-range" min="100" max="500" value="250" id="qrSize">
+                                            <div class="size-value text-center" id="sizeValue">250 x 250</div>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <label for="foregroundColor" class="form-label">Foreground Color</label>
+                                                <input type="color" class="form-control form-control-color w-100" id="foregroundColor" value="#000000">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="backgroundColor" class="form-label">Background Color</label>
+                                                <input type="color" class="form-control form-control-color w-100" id="backgroundColor" value="#ffffff">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="errorCorrectionLevel" class="form-label">Error Correction Level</label>
+                                            <select id="errorCorrectionLevel" class="form-select">
+                                                <option value="L">Low (7%)</option>
+                                                <option value="M">Medium (15%)</option>
+                                                <option value="Q" selected>Quartile (25%)</option>
+                                                <option value="H">High (30%)</option>
+                                            </select>
+                                            <small class="form-text text-muted">Higher correction allows for more design elements</small>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="qrStyle" class="form-label">QR Code Style</label>
+                                            <select id="qrStyle" class="form-select">
+                                                <option value="standard" selected>Standard</option>
+                                                <option value="framed">Framed</option>
+                                                <option value="shadow">Shadow Effect</option>
+                                                <option value="gradient">Gradient Background</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="mb-3 d-none" id="logoSection">
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="addLogo">
+                                                <label class="form-check-label" for="addLogo">
+                                                    Add Logo to Center (requires High correction)
+                                                </label>
+                                            </div>
+                                            <div class="input-group mt-2 d-none" id="logoUrlGroup">
+                                                <span class="input-group-text">Logo URL</span>
+                                                <input type="text" class="form-control" id="logoUrl" placeholder="https://example.com/logo.png">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="cornerStyle" class="form-label">Corner Style</label>
+                                            <select id="cornerStyle" class="form-select">
+                                                <option value="square" selected>Square (Standard)</option>
+                                                <option value="rounded">Rounded</option>
+                                                <option value="extraRounded">Extra Rounded</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-grid gap-2 mt-4">
+                                        <button type="button" id="generateBtn" class="btn btn-primary btn-lg">Generate QR Code</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="output-section p-3 text-center">
+                                    <h3 class="mb-4">Your QR Code</h3>
+                                    <div id="qrCodeContainer" class="qr-container mb-4">
+                                        <div class="placeholder-message">
+                                            Your QR code will appear here
+                                        </div>
+                                    </div>
+                                    <div class="download-buttons d-none" id="downloadSection">
+                                        <div class="d-grid gap-2">
+                                            <button type="button" id="downloadPng" class="btn btn-success mb-2">
+                                                <i class="bi bi-download"></i> Download PNG
+                                            </button>
+                                            <button type="button" id="downloadSvg" class="btn btn-info mb-2">
+                                                <i class="bi bi-download"></i> Download SVG
+                                            </button>
+                                            <button type="button" id="downloadPdf" class="btn btn-danger mb-2">
+                                                <i class="bi bi-file-pdf"></i> Download PDF
+                                            </button>
+                                            <button type="button" id="shareQR" class="btn btn-primary mb-2">
+                                                <i class="bi bi-share"></i> Share QR Code
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <p class="mb-0">Created with ❤️ | © 2025 QR Code Generator</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"></script>
+    <!-- QR Styler for Enhanced QR Codes -->
+    <script src="js/qr-styler.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,564 @@
+/* Enhanced Loading Screen Styles - Study Care & Computer Classes */
+/* Improved loading experience with signature and better animations */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&display=swap');
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.loading-screen.fade-out {
+    opacity: 0;
+    transform: scale(1.05);
+    pointer-events: none;
+}
+
+/* Optimized animated background particles */
+.loading-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.12) 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.12) 0%, transparent 40%),
+        radial-gradient(circle at 40% 40%, rgba(241,196,15,0.15) 0%, transparent 40%);
+    animation: float-particles 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+.loading-screen::after {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -30%;
+    width: 160%;
+    height: 160%;
+    background: 
+        linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.06) 50%, transparent 55%);
+    animation: shimmer 3s linear infinite;
+    z-index: 2;
+}
+
+@keyframes float-particles {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translateY(-25px) rotate(180deg);
+        opacity: 1;
+    }
+}
+
+@keyframes shimmer {
+    0% { transform: translate(-30%, -30%) rotate(-45deg); }
+    100% { transform: translate(-30%, -30%) rotate(-45deg) translateX(100vw); }
+}
+
+.loading-content {
+    text-align: center;
+    color: white;
+    z-index: 10;
+    position: relative;
+    animation: fadeInUp 0.6s ease-out;
+    padding: 40px 30px;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.loading-icon {
+    font-size: 4rem;
+    color: #f1c40f;
+    margin-bottom: 25px;
+    animation: pulse-glow 1.5s infinite;
+    text-shadow: 0 0 30px rgba(241, 196, 15, 0.8);
+    position: relative;
+    filter: drop-shadow(0 4px 12px rgba(241, 196, 15, 0.4));
+}
+
+.loading-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    border: 2px solid rgba(241, 196, 15, 0.3);
+    border-radius: 50%;
+    animation: iconRing 3s linear infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { 
+        transform: scale(1);
+        filter: brightness(1) drop-shadow(0 0 20px rgba(241, 196, 15, 0.5));
+    }
+    50% { 
+        transform: scale(1.05);
+        filter: brightness(1.3) drop-shadow(0 0 40px rgba(241, 196, 15, 0.8));
+    }
+}
+
+@keyframes iconRing {
+    0% { 
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1.5) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.loading-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: slideInLeft 1s ease-out 0.3s forwards;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.loading-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+    opacity: 0;
+    animation: slideInRight 1s ease-out 0.6s forwards;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
+    transition: opacity 0.4s ease-in-out;
+    min-height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.spinner-container {
+    margin: 25px 0;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.2s forwards;
+    position: relative;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-top: 3px solid #f1c40f;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(241, 196, 15, 0.4);
+    position: relative;
+}
+
+.spinner::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px solid transparent;
+    border-top: 2px solid rgba(241, 196, 15, 0.6);
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite reverse;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Progress Bar */
+.loading-progress {
+    width: 220px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    margin: 25px auto 0;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.4s forwards;
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.loading-progress::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255,255,255,0.15) 50%, 
+        transparent 100%);
+    animation: progressShimmer 2.5s linear infinite;
+}
+
+.loading-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #f1c40f 0%, #f39c12 50%, #e67e22 100%);
+    width: 0%;
+    border-radius: 10px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 0 20px rgba(241, 196, 15, 0.6),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255,255,255,0.3) 50%, 
+        transparent 100%);
+    animation: progressGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes progressShimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes progressGlow {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+/* Enhanced Signature Section */
+.loading-signature {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0;
+    animation: signatureReveal 1s ease-out 0.8s forwards;
+    padding: 25px 35px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 15;
+}
+
+.signature-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.signature-divider {
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    animation: glow-line 3s ease-in-out infinite;
+    border-radius: 1px;
+}
+
+@keyframes glow-line {
+    0%, 100% { 
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        box-shadow: none;
+    }
+    50% { 
+        background: linear-gradient(90deg, transparent, rgba(241,196,15,0.8), transparent);
+        box-shadow: 0 0 10px rgba(241,196,15,0.5);
+    }
+}
+
+.signature-text {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-family: 'Dancing Script', cursive;
+    font-style: italic;
+}
+
+.signature-name {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #f1c40f;
+    background: linear-gradient(135deg, #f1c40f 0%, #f39c12 30%, #e67e22 60%, #d35400 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 300% 300%;
+    animation: gradientShift 3s ease infinite;
+    font-family: 'Great Vibes', cursive;
+    text-shadow: 0 0 30px rgba(241, 196, 15, 0.5);
+    margin: 12px 0;
+    position: relative;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    font-style: italic;
+    transform: rotate(-1deg);
+    filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.3));
+}
+
+.signature-name::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #f1c40f, #f39c12, #e67e22, transparent);
+    animation: underlineExpand 1.2s ease-out 1.2s forwards;
+    border-radius: 2px;
+    box-shadow: 0 0 15px rgba(241, 196, 15, 0.6);
+}
+
+@keyframes underlineExpand {
+    0% { 
+        width: 0; 
+        opacity: 0;
+    }
+    50% { 
+        width: 95%; 
+        opacity: 1;
+    }
+    100% { 
+        width: 90%; 
+        opacity: 0.8;
+    }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.signature-title {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 400;
+    letter-spacing: 2.5px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-family: 'Dancing Script', cursive;
+    font-style: italic;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes signatureReveal {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .loading-icon {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .loading-content {
+        padding: 30px 25px;
+        max-width: 320px;
+    }
+    
+    .loading-progress {
+        width: 180px;
+    }
+    
+    .signature-name {
+        font-size: 1.8rem;
+    }
+    
+    .loading-signature {
+        padding: 20px 25px;
+        bottom: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .loading-icon {
+        font-size: 3rem;
+    }
+    
+    .loading-content {
+        padding: 25px 20px;
+        max-width: 280px;
+    }
+    
+    .loading-progress {
+        width: 160px;
+    }
+    
+    .signature-name {
+        font-size: 1.6rem;
+    }
+    
+    .signature-line {
+        gap: 8px;
+    }
+    
+    .signature-divider {
+        width: 25px;
+    }
+    
+    .loading-signature {
+        padding: 15px 20px;
+        bottom: 40px;
+    }
+}
+
+/* Accessibility Features */
+@media (prefers-contrast: high) {
+    .loading-screen {
+        background: #000;
+    }
+    
+    .loading-icon,
+    .signature-name {
+        color: #fff;
+        text-shadow: none;
+    }
+    
+    .loading-progress-bar {
+        background: #fff;
+        box-shadow: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loading-screen::before,
+    .loading-screen::after,
+    .loading-icon,
+    .spinner,
+    .spinner::after {
+        animation: none;
+    }
+    
+    .loading-content,
+    .loading-title,
+    .loading-subtitle,
+    .spinner-container,
+    .loading-progress,
+    .loading-signature {
+        animation: none;
+        opacity: 1;
+    }
+}
+
+/* Page content animations */
+.page-content {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.page-content.page-loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes pageContentFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

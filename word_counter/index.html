@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter - Study Care & Computer Classes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-list-ol"></i> Word Counter</h1>
+            <p>Count words, characters, paragraphs, and more</p>
+        </header>
+        
+        <main class="main-content">
+            <div class="counter-container">
+                <textarea id="textInput" placeholder="Paste or type your text here to count words, characters, and more..."></textarea>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-font"></i>
+                        <div class="stat-number" id="wordCount">0</div>
+                        <div class="stat-label">Words</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-keyboard"></i>
+                        <div class="stat-number" id="charCount">0</div>
+                        <div class="stat-label">Characters</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-keyboard"></i>
+                        <div class="stat-number" id="charNoSpaceCount">0</div>
+                        <div class="stat-label">Characters (no spaces)</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-paragraph"></i>
+                        <div class="stat-number" id="paragraphCount">0</div>
+                        <div class="stat-label">Paragraphs</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-list"></i>
+                        <div class="stat-number" id="sentenceCount">0</div>
+                        <div class="stat-label">Sentences</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <div class="stat-number" id="readingTime">0</div>
+                        <div class="stat-label">Reading Time (min)</div>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <button onclick="clearText()"><i class="fas fa-trash"></i> Clear Text</button>
+                    <button onclick="exportStats()"><i class="fas fa-download"></i> Export Stats</button>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Study Care & Computer Classes</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

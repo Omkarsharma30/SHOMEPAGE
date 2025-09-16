@@ -1,0 +1,532 @@
+/* Universal Bug Reporting System */
+/* Enhanced stylish and user-friendly bug reporting interface */
+
+.bug-report-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.bug-report-button {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.bug-report-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.bug-report-button:hover::before {
+    left: 100%;
+}
+
+.bug-report-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(231, 76, 60, 0.4);
+    background: linear-gradient(135deg, #c0392b, #a93226);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.bug-report-button i {
+    font-size: 1rem;
+    animation: pulse-bug 2s infinite;
+}
+
+@keyframes pulse-bug {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Bug Report Modal */
+.bug-report-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInModal 0.3s ease-out;
+}
+
+.bug-report-modal.active {
+    display: flex;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(10px);
+    }
+}
+
+.bug-report-form {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideInModal 0.4s ease-out;
+    position: relative;
+}
+
+@keyframes slideInModal {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.bug-report-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+.bug-report-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bug-report-title i {
+    color: #e74c3c;
+    font-size: 1.3rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #7f8c8d;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.close-modal:hover {
+    background: #f8f9fa;
+    color: #e74c3c;
+    transform: rotate(90deg);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    background: #f8f9fa;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.priority-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.priority-option {
+    padding: 15px 10px;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.priority-option i {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.priority-option.low {
+    color: #27ae60;
+    border-color: #27ae60;
+    background: rgba(39, 174, 96, 0.1);
+}
+
+.priority-option.medium {
+    color: #f39c12;
+    border-color: #f39c12;
+    background: rgba(243, 156, 18, 0.1);
+}
+
+.priority-option.high {
+    color: #e74c3c;
+    border-color: #e74c3c;
+    background: rgba(231, 76, 60, 0.1);
+}
+
+.priority-option.urgent {
+    color: #8e44ad;
+    border-color: #8e44ad;
+    background: rgba(142, 68, 173, 0.1);
+}
+
+.priority-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.priority-option.selected {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.priority-option.selected.low {
+    background: #27ae60;
+    color: white;
+}
+
+.priority-option.selected.medium {
+    background: #f39c12;
+    color: white;
+}
+
+.priority-option.selected.high {
+    background: #e74c3c;
+    color: white;
+}
+
+.priority-option.selected.urgent {
+    background: #8e44ad;
+    color: white;
+}
+
+.bug-category-chips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.category-chip {
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.category-chip i {
+    font-size: 1rem;
+}
+
+.category-chip:hover {
+    background: #e9ecef;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-chip.selected {
+    background: #3498db;
+    border-color: #3498db;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.form-hint {
+    margin-top: 8px;
+    padding: 10px 15px;
+    background: rgba(52, 152, 219, 0.1);
+    border-left: 4px solid #3498db;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.85rem;
+    color: #2980b9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #f8f9fa;
+}
+
+.btn-submit,
+.btn-cancel {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(135deg, #2980b9, #21618c);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+}
+
+.btn-submit:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-cancel {
+    background: #f8f9fa;
+    color: #7f8c8d;
+    border: 2px solid #e9ecef;
+}
+
+.btn-cancel:hover {
+    background: #e9ecef;
+    color: #2c3e50;
+}
+
+.success-message {
+    text-align: center;
+    padding: 30px;
+    display: none;
+}
+
+.success-message.show {
+    display: block;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #27ae60;
+    margin-bottom: 20px;
+    animation: successPulse 1s ease-out;
+}
+
+@keyframes successPulse {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.success-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #27ae60;
+    margin-bottom: 10px;
+}
+
+.success-text {
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .bug-report-container {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .bug-report-button {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .bug-report-form {
+        padding: 20px;
+        margin: 20px;
+        width: calc(100% - 40px);
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .priority-options {
+        flex-direction: column;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .bug-report-title {
+        font-size: 1.2rem;
+    }
+    
+    .form-input,
+    .form-select,
+    .form-textarea {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .category-chip {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+}
+
+/* Animation for floating button */
+.bug-report-button {
+    animation: floatBug 3s ease-in-out infinite;
+}
+
+@keyframes floatBug {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Tooltip for bug button */
+.bug-report-button::before {
+    content: "Found a bug? Let us know!";
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background: #2c3e50;
+    color: white;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10001;
+}
+
+.bug-report-button::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    right: 20px;
+    margin-bottom: 2px;
+    border: 6px solid transparent;
+    border-top-color: #2c3e50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.bug-report-button:hover::before,
+.bug-report-button:hover::after {
+    opacity: 1;
+}

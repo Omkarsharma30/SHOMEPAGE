@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Converter - Study Care & Computer Classes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-exchange-alt"></i> Case Converter</h1>
+            <p>Convert text between different cases easily</p>
+        </header>
+        
+        <main class="main-content">
+            <div class="converter-container">
+                <div class="input-section">
+                    <label for="inputText">Enter your text:</label>
+                    <textarea id="inputText" placeholder="Type or paste your text here..."></textarea>
+                </div>
+                
+                <div class="conversion-buttons">
+                    <button onclick="convertCase('upper')">
+                        <i class="fas fa-arrow-up"></i> UPPERCASE
+                    </button>
+                    <button onclick="convertCase('lower')">
+                        <i class="fas fa-arrow-down"></i> lowercase
+                    </button>
+                    <button onclick="convertCase('title')">
+                        <i class="fas fa-font"></i> Title Case
+                    </button>
+                    <button onclick="convertCase('sentence')">
+                        <i class="fas fa-align-left"></i> Sentence case
+                    </button>
+                    <button onclick="convertCase('camel')">
+                        <i class="fas fa-code"></i> camelCase
+                    </button>
+                    <button onclick="convertCase('pascal')">
+                        <i class="fas fa-code"></i> PascalCase
+                    </button>
+                    <button onclick="convertCase('snake')">
+                        <i class="fas fa-minus"></i> snake_case
+                    </button>
+                    <button onclick="convertCase('kebab')">
+                        <i class="fas fa-minus"></i> kebab-case
+                    </button>
+                </div>
+                
+                <div class="output-section">
+                    <label for="outputText">Converted text:</label>
+                    <textarea id="outputText" readonly placeholder="Converted text will appear here..."></textarea>
+                    <div class="output-actions">
+                        <button onclick="copyOutput()">
+                            <i class="fas fa-copy"></i> Copy Result
+                        </button>
+                        <button onclick="clearAll()">
+                            <i class="fas fa-trash"></i> Clear All
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Study Care & Computer Classes</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

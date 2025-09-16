@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator - Study Care & Computer Classes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <h1>Password Generator</h1>
+                </div>
+                <p class="subtitle">Generate secure passwords with customizable options</p>
+                <a href="../index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Password Display Section -->
+            <div class="password-display-section">
+                <div class="password-output-container">
+                    <div class="password-field">
+                        <input type="text" id="generated-password" placeholder="Your secure password will appear here..." readonly>
+                        <div class="password-actions">
+                            <button class="action-btn copy-btn" onclick="copyPassword()" title="Copy Password">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <button class="action-btn visibility-btn" onclick="toggleVisibility()" title="Show/Hide Password">
+                                <i class="fas fa-eye" id="visibility-icon"></i>
+                            </button>
+                            <button class="action-btn refresh-btn" onclick="generatePassword()" title="Generate New Password">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Password Strength Meter -->
+                    <div class="strength-meter">
+                        <div class="strength-label">
+                            <span>Password Strength:</span>
+                            <span id="strength-text">Not Generated</span>
+                        </div>
+                        <div class="strength-bar">
+                            <div id="strength-fill" class="strength-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generator Options -->
+            <div class="generator-options">
+                <div class="options-container">
+                    <div class="option-section">
+                        <h3><i class="fas fa-sliders-h"></i> Password Length</h3>
+                        <div class="length-control">
+                            <input type="range" id="length-slider" min="4" max="128" value="16" class="slider">
+                            <div class="length-display">
+                                <span id="length-value">16</span>
+                                <span class="length-label">characters</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-section">
+                        <h3><i class="fas fa-check-square"></i> Character Types</h3>
+                        <div class="character-options">
+                            <div class="option-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="uppercase" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="option-text">Uppercase Letters (A-Z)</span>
+                                    <span class="option-example">ABCDEFG</span>
+                                </label>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="lowercase" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="option-text">Lowercase Letters (a-z)</span>
+                                    <span class="option-example">abcdefg</span>
+                                </label>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="numbers" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="option-text">Numbers (0-9)</span>
+                                    <span class="option-example">1234567</span>
+                                </label>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="symbols" checked>
+                                    <span class="checkmark"></span>
+                                    <span class="option-text">Symbols (!@#$%^&*)</span>
+                                    <span class="option-example">!@#$%^&</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-section">
+                        <h3><i class="fas fa-cog"></i> Advanced Options</h3>
+                        <div class="advanced-options">
+                            <div class="option-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="exclude-similar">
+                                    <span class="checkmark"></span>
+                                    <span class="option-text">Exclude Similar Characters</span>
+                                    <span class="option-example">Avoid: 0, O, l, I, 1</span>
+                                </label>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="exclude-ambiguous">
+                                    <span class="checkmark"></span>
+                                    <span class="option-text">Exclude Ambiguous Characters</span>
+                                    <span class="option-example">Avoid: {}[]()\/~,;.<></span>
+                                </label>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="no-duplicate">
+                                    <span class="checkmark"></span>
+                                    <span class="option-text">No Duplicate Characters</span>
+                                    <span class="option-example">Each character appears once</span>
+                                </label>
+                            </div>
+                            
+                            <div class="option-group">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="secure-random">
+                                    <span class="checkmark"></span>
+                                    <span class="option-text">Use Secure Random</span>
+                                    <span class="option-example">Cryptographically secure</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-section">
+                        <h3><i class="fas fa-list"></i> Quick Presets</h3>
+                        <div class="preset-buttons">
+                            <button class="preset-btn" onclick="applyPreset('simple')">
+                                <i class="fas fa-user"></i>
+                                <span>Simple</span>
+                                <small>8 chars, letters & numbers</small>
+                            </button>
+                            <button class="preset-btn" onclick="applyPreset('standard')">
+                                <i class="fas fa-shield"></i>
+                                <span>Standard</span>
+                                <small>12 chars, mixed case & symbols</small>
+                            </button>
+                            <button class="preset-btn" onclick="applyPreset('strong')">
+                                <i class="fas fa-lock"></i>
+                                <span>Strong</span>
+                                <small>16 chars, all character types</small>
+                            </button>
+                            <button class="preset-btn" onclick="applyPreset('ultra')">
+                                <i class="fas fa-shield-virus"></i>
+                                <span>Ultra Secure</span>
+                                <small>32 chars, maximum security</small>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generate Button -->
+            <div class="generate-section">
+                <button class="generate-btn" onclick="generatePassword()">
+                    <i class="fas fa-magic"></i>
+                    <span>Generate Password</span>
+                </button>
+            </div>
+
+            <!-- Password History -->
+            <div class="history-section">
+                <div class="history-header">
+                    <h3><i class="fas fa-history"></i> Recent Passwords</h3>
+                    <button class="clear-history-btn" onclick="clearHistory()">
+                        <i class="fas fa-trash"></i> Clear History
+                    </button>
+                </div>
+                <div class="history-container" id="password-history">
+                    <div class="history-empty">
+                        <i class="fas fa-info-circle"></i>
+                        <p>No passwords generated yet. Create your first secure password!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Tips -->
+            <div class="security-tips">
+                <div class="tips-header">
+                    <h3><i class="fas fa-lightbulb"></i> Security Tips</h3>
+                </div>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <i class="fas fa-key"></i>
+                        <h4>Use Unique Passwords</h4>
+                        <p>Never reuse passwords across different accounts or services.</p>
+                    </div>
+                    <div class="tip-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>Enable 2FA</h4>
+                        <p>Add two-factor authentication for an extra layer of security.</p>
+                    </div>
+                    <div class="tip-card">
+                        <i class="fas fa-database"></i>
+                        <h4>Use Password Manager</h4>
+                        <p>Store passwords securely with a reputable password manager.</p>
+                    </div>
+                    <div class="tip-card">
+                        <i class="fas fa-sync"></i>
+                        <h4>Regular Updates</h4>
+                        <p>Change passwords regularly, especially for important accounts.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Study Care & Computer Classes - Password Generator Tool</p>
+            <p class="security-notice">
+                <i class="fas fa-shield-check"></i>
+                All passwords are generated locally in your browser. No data is sent to any server.
+            </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Fallback error handling
+        window.addEventListener('error', function(e) {
+            console.error('Error loading Password Generator:', e);
+        });
+        
+        // Ensure the tool is visible
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.display = 'block';
+            document.body.style.visibility = 'visible';
+        });
+    </script>
+    
+    <!-- Bug Reporting System -->
+    <link rel="stylesheet" href="../bug-report.css">
+    <script src="../bug-report.js"></script>
+</body>
+</html>

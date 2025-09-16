@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker - Study Care & Computer Classes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-palette"></i>
+                    <h1>Color Picker</h1>
+                </div>
+                <p class="subtitle">Pick colors, create palettes, and explore color harmony</p>
+                <a href="../index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Image Upload Section -->
+            <div class="image-upload-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-image"></i> Image Color Extraction</h2>
+                </div>
+                <div class="upload-container">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h3>Upload Image for Color Analysis</h3>
+                            <p>Drag & drop an image or click to browse</p>
+                            <input type="file" id="imageInput" accept="image/*" hidden>
+                            <button class="btn-primary" onclick="document.getElementById('imageInput').click()">
+                                <i class="fas fa-folder-open"></i> Choose Image
+                            </button>
+                        </div>
+                    </div>
+                    <div class="image-preview-container" id="imagePreviewContainer" style="display: none;">
+                        <div class="image-tools">
+                            <button class="btn-secondary" id="extractDominantColors">
+                                <i class="fas fa-palette"></i> Extract Dominant Colors
+                            </button>
+                            <button class="btn-secondary" id="extractPalette">
+                                <i class="fas fa-swatchbook"></i> Generate Palette
+                            </button>
+                            <button class="btn-secondary" id="enableEyedropper">
+                                <i class="fas fa-eye-dropper"></i> Eyedropper Tool
+                            </button>
+                        </div>
+                        <div class="image-canvas-container">
+                            <canvas id="imageCanvas"></canvas>
+                            <div class="eyedropper-cursor" id="eyedropperCursor"></div>
+                        </div>
+                        <div class="extracted-colors" id="extractedColors"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color Picker Section -->
+            <div class="color-picker-section">
+                <div class="picker-container">
+                    <div class="color-display">
+                        <div class="color-preview" id="selectedColor"></div>
+                        <div class="color-info">
+                            <h3>Selected Color</h3>
+                            <div class="color-name" id="colorName">
+                                <strong>Color Name:</strong> <span id="colorNameValue">Black</span>
+                            </div>
+                            <div class="color-formats">
+                                <div class="format-group">
+                                    <label>HEX:</label>
+                                    <div class="format-input">
+                                        <input type="text" id="hexInput" placeholder="#000000">
+                                        <button class="copy-btn" id="copyHex" title="Copy HEX">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="format-group">
+                                    <label>RGB:</label>
+                                    <div class="rgb-inputs">
+                                        <input type="number" id="rgbR" min="0" max="255" value="0" placeholder="R">
+                                        <input type="number" id="rgbG" min="0" max="255" value="0" placeholder="G">
+                                        <input type="number" id="rgbB" min="0" max="255" value="0" placeholder="B">
+                                        <button class="copy-btn" id="copyRgb" title="Copy RGB">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="format-group">
+                                    <label>HSL:</label>
+                                    <div class="hsl-inputs">
+                                        <input type="number" id="hslH" min="0" max="360" value="0" placeholder="H">
+                                        <input type="number" id="hslS" min="0" max="100" value="0" placeholder="S">
+                                        <input type="number" id="hslL" min="0" max="100" value="0" placeholder="L">
+                                    </div>
+                                </div>
+                                <div class="format-group">
+                                    <label>HSV:</label>
+                                    <div class="hsv-inputs">
+                                        <input type="number" id="hsvH" min="0" max="360" value="0" placeholder="H">
+                                        <input type="number" id="hsvS" min="0" max="100" value="0" placeholder="S">
+                                        <input type="number" id="hsvV" min="0" max="100" value="0" placeholder="V">
+                                    </div>
+                                </div>
+                                <div class="format-group">
+                                    <label>CMYK:</label>
+                                    <div class="cmyk-inputs">
+                                        <input type="number" id="cmykC" min="0" max="100" value="0" placeholder="C">
+                                        <input type="number" id="cmykM" min="0" max="100" value="0" placeholder="M">
+                                        <input type="number" id="cmykY" min="0" max="100" value="0" placeholder="Y">
+                                        <input type="number" id="cmykK" min="0" max="100" value="0" placeholder="K">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="canvas-container">
+                        <canvas id="colorCanvas" width="300" height="300"></canvas>
+                    </div>
+                </div>
+                
+                <div class="controls-section">
+                    <div class="action-buttons">
+                        <button class="btn-primary" id="addToHistory">
+                            <i class="fas fa-history"></i> Add to History
+                        </button>
+                        <button class="btn-primary" id="randomColor">
+                            <i class="fas fa-random"></i> Random Color
+                        </button>
+                        <button class="btn-primary" id="addToPalette">
+                            <i class="fas fa-plus"></i> Add to Palette
+                        </button>
+                        <button class="btn-primary" id="analyzeColor">
+                            <i class="fas fa-search"></i> Analyze Color
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color Analysis Section -->
+            <div class="analysis-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-line"></i> Color Analysis</h2>
+                </div>
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <h4><i class="fas fa-thermometer-half"></i> Color Temperature</h4>
+                        <div class="temperature-info" id="temperatureInfo">
+                            <span class="temp-value" id="tempValue">Neutral</span>
+                            <div class="temp-indicator" id="tempIndicator"></div>
+                        </div>
+                    </div>
+                    <div class="analysis-card">
+                        <h4><i class="fas fa-eye"></i> Accessibility</h4>
+                        <div class="accessibility-info" id="accessibilityInfo">
+                            <div class="contrast-ratio" id="contrastRatio">AA: ✓ | AAA: ✓</div>
+                        </div>
+                    </div>
+                    <div class="analysis-card">
+                        <h4><i class="fas fa-heart"></i> Color Psychology</h4>
+                        <div class="psychology-info" id="psychologyInfo">
+                            <span id="colorMood">Neutral, Balanced</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color Harmony Section -->
+            <div class="harmony-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-magic"></i> Color Harmony</h2>
+                    <button class="btn-secondary" id="generateHarmony">
+                        <i class="fas fa-palette"></i> Generate Harmony
+                    </button>
+                </div>
+                <div class="harmony-colors" id="harmonyColors">
+                    <!-- Harmony colors will be generated here -->
+                </div>
+            </div>
+
+            <!-- Color History Section -->
+            <div class="history-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-history"></i> Color History</h2>
+                </div>
+                <div class="color-history" id="colorHistory">
+                    <!-- Color history will be displayed here -->
+                </div>
+            </div>
+
+            <!-- Color Hunt Style Palette Collection -->
+            <div class="colorhunt-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-fire"></i> Color Palette Collection</h2>
+                    <div class="palette-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="trending">Trending</button>
+                        <button class="filter-btn" data-filter="popular">Popular</button>
+                        <button class="filter-btn" data-filter="gradient">Gradient</button>
+                        <button class="filter-btn" data-filter="monochrome">Monochrome</button>
+                        <button class="filter-btn" data-filter="pastel">Pastel</button>
+                        <button class="filter-btn" data-filter="dark">Dark</button>
+                        <button class="filter-btn" data-filter="bright">Bright</button>
+                    </div>
+                </div>
+                
+                <div class="palette-search">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="paletteSearch" placeholder="Search palettes by color, mood, or style...">
+                    </div>
+                    <div class="sort-options">
+                        <select id="sortPalettes">
+                            <option value="popular">Most Popular</option>
+                            <option value="newest">Newest</option>
+                            <option value="trending">Trending</option>
+                            <option value="random">Random</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="colorhunt-grid" id="colorhuntGrid">
+                    <!-- Palette cards will be generated here -->
+                </div>
+                
+                <div class="load-more-container">
+                    <button class="btn-secondary" id="loadMorePalettes">
+                        <i class="fas fa-plus"></i> Load More Palettes
+                    </button>
+                </div>
+            </div>
+
+            <!-- Custom Palette Creator -->
+            <div class="palette-creator-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-paint-brush"></i> Create Your Palette</h2>
+                    <button class="btn-primary" id="generateRandomPalette">
+                        <i class="fas fa-dice"></i> Generate Random
+                    </button>
+                </div>
+                
+                <div class="palette-creator">
+                    <div class="color-slots">
+                        <div class="color-slot" data-slot="0">
+                            <div class="color-display" style="background: #ff6b6b;"></div>
+                            <input type="color" value="#ff6b6b">
+                            <button class="remove-color"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="color-slot" data-slot="1">
+                            <div class="color-display" style="background: #4ecdc4;"></div>
+                            <input type="color" value="#4ecdc4">
+                            <button class="remove-color"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="color-slot" data-slot="2">
+                            <div class="color-display" style="background: #45b7d1;"></div>
+                            <input type="color" value="#45b7d1">
+                            <button class="remove-color"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="color-slot" data-slot="3">
+                            <div class="color-display" style="background: #f9ca24;"></div>
+                            <input type="color" value="#f9ca24">
+                            <button class="remove-color"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="add-color-slot">
+                            <button class="add-color-btn" id="addColorSlot">
+                                <i class="fas fa-plus"></i>
+                                <span>Add Color</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="palette-actions">
+                        <button class="btn-primary" id="saveCustomPalette">
+                            <i class="fas fa-save"></i> Save Palette
+                        </button>
+                        <button class="btn-secondary" id="exportPalette">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                        <button class="btn-secondary" id="sharePalette">
+                            <i class="fas fa-share"></i> Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Palette Management Section -->
+            <div class="palette-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-swatchbook"></i> Current Palette</h2>
+                    <div class="palette-controls">
+                        <button class="btn-secondary" id="savePalette">
+                            <i class="fas fa-save"></i> Save Palette
+                        </button>
+                        <button class="btn-secondary" id="clearPalette">
+                            <i class="fas fa-trash"></i> Clear
+                        </button>
+                    </div>
+                </div>
+                <div class="current-palette" id="currentPalette">
+                    <!-- Current palette colors will be displayed here -->
+                </div>
+            </div>
+
+            <!-- Saved Palettes Section -->
+            <div class="saved-palettes-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-folder"></i> Saved Palettes</h2>
+                </div>
+                <div class="saved-palettes" id="savedPalettes">
+                    <!-- Saved palettes will be displayed here -->
+                </div>
+            </div>
+
+            <!-- Preset Colors Section -->
+            <div class="presets-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-th"></i> Preset Colors</h2>
+                </div>
+                <div class="preset-colors" id="presetColors">
+                    <!-- Preset colors will be generated here -->
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Study Care & Computer Classes - Color Picker Tool</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

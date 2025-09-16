@@ -1,0 +1,41 @@
+{
+  "name": "pdf-split-pro",
+  "version": "1.0.0",
+  "description": "A modern, feature-rich web application for splitting PDF files with multiple splitting options",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server .",
+    "build": "echo 'Static site - no build required'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "pdf",
+    "split",
+    "pdf-splitter",
+    "web-app",
+    "javascript",
+    "pdf-lib",
+    "client-side"
+  ],
+  "author": "PDF Split Pro Team",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/pdf-split-pro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/pdf-split-pro/issues"
+  },
+  "homepage": "https://github.com/yourusername/pdf-split-pro#readme",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 11"
+  ]
+}

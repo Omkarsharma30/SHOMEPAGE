@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Split Pro - Advanced PDF Splitter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-file-pdf"></i>
+                <h1>PDF Split Pro</h1>
+            </div>
+            <p class="subtitle">Split PDF files into separate documents - Easy as 1-2-3!</p>
+            <div class="designer-credit">
+                <p><i class="fas fa-code"></i> Designed by <strong>StudyCare & Computer Classes</strong></p>
+            </div>
+            <div class="quick-steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <span class="step-text">Upload PDF</span>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <span class="step-text">Select Pages</span>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <span class="step-text">Download</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-upload"></i> Step 1: Upload Your PDF</h2>
+                    <p>Choose the PDF file you want to split into smaller files</p>
+                </div>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h3>Drag your PDF file here</h3>
+                        <p>or <span class="browse-text">click to browse</span> your computer</p>
+                        <div class="file-requirements">
+                            <small><i class="fas fa-info-circle"></i> Accepts PDF files up to 100MB</small>
+                        </div>
+                        <input type="file" id="fileInput" accept=".pdf" hidden>
+                    </div>
+                    <div class="upload-progress" id="uploadProgress" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span class="progress-text" id="progressText">0%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- File Info Section -->
+            <section class="file-info-section" id="fileInfoSection" style="display: none;">
+                <div class="file-info">
+                    <div class="file-details">
+                        <i class="fas fa-file-pdf file-icon"></i>
+                        <div class="file-meta">
+                            <h4 id="fileName">document.pdf</h4>
+                            <p id="fileSize">0 MB</p>
+                            <p id="pageCount">0 pages</p>
+                        </div>
+                    </div>
+                    <button class="btn-secondary" id="removeFile">
+                        <i class="fas fa-times"></i> Remove
+                    </button>
+                </div>
+            </section>
+
+            <!-- Split Options Section -->
+            <section class="split-options-section" id="splitOptionsSection" style="display: none;">
+                <div class="section-header">
+                    <h2><i class="fas fa-scissors"></i> Step 2: Choose How to Split</h2>
+                    <p>Select the method that works best for your needs</p>
+                </div>
+                <div class="options-grid">
+                    <div class="option-card recommended" data-option="pages">
+                        <div class="option-badge">Most Popular</div>
+                        <i class="fas fa-copy"></i>
+                        <h4>Split by Page Numbers</h4>
+                        <p>Choose specific pages or page ranges</p>
+                        <div class="example">Example: Pages 1-5, 8, 10-12</div>
+                    </div>
+                    <div class="option-card" data-option="equal">
+                        <i class="fas fa-equals"></i>
+                        <h4>Split into Equal Parts</h4>
+                        <p>Divide PDF into equal-sized chunks</p>
+                        <div class="example">Example: Split into 3 equal parts</div>
+                    </div>
+                    <div class="option-card" data-option="size">
+                        <i class="fas fa-weight"></i>
+                        <h4>Split by File Size</h4>
+                        <p>Control maximum size of each file</p>
+                        <div class="example">Example: Max 5MB per file</div>
+                    </div>
+                    <div class="option-card" data-option="bookmarks">
+                        <i class="fas fa-bookmark"></i>
+                        <h4>Split by Bookmarks</h4>
+                        <p>Split at chapter/section bookmarks</p>
+                        <div class="example">Example: Each chapter = 1 file</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Configuration Section -->
+            <section class="config-section" id="configSection" style="display: none;">
+                <div class="section-header">
+                    <h2><i class="fas fa-cog"></i> Step 3: Configure Your Split</h2>
+                    <p>Set up exactly how you want your PDF to be split</p>
+                </div>
+                
+                <!-- Pages Configuration -->
+                <div class="config-panel" id="pagesConfig" style="display: none;">
+                    <div class="config-header">
+                        <h3><i class="fas fa-list-ol"></i> Select Page Ranges</h3>
+                        <p>Each range you select will become a separate PDF file</p>
+                    </div>
+                    
+                    <div class="tutorial-card">
+                        <h4><i class="fas fa-lightbulb"></i> How it works:</h4>
+                        <ul>
+                            <li><strong>Single pages:</strong> Type "3" to get page 3 only</li>
+                            <li><strong>Page ranges:</strong> Type "1-5" to get pages 1 through 5</li>
+                            <li><strong>Multiple selections:</strong> Type "1-3, 7, 10-15" to get 3 separate PDFs</li>
+                        </ul>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="pageRanges">
+                            <i class="fas fa-keyboard"></i> Type page ranges (or use the builder below)
+                        </label>
+                        <input type="text" id="pageRanges" placeholder="Example: 1-3, 5, 7-10, 12-15">
+                        <small><i class="fas fa-info-circle"></i> Separate multiple ranges with commas</small>
+                    </div>
+                    
+                    <div class="range-builder">
+                        <h4><i class="fas fa-tools"></i> Easy Range Builder</h4>
+                        <p>Don't want to type? Use these buttons to build your selection:</p>
+                        <div class="builder-controls">
+                            <div class="range-input">
+                                <label>From Page:</label>
+                                <input type="number" id="rangeStart" min="1" placeholder="1">
+                            </div>
+                            <div class="range-input">
+                                <label>To Page:</label>
+                                <input type="number" id="rangeEnd" min="1" placeholder="5">
+                            </div>
+                            <button type="button" class="btn-add-range" id="addRangeBtn">
+                                <i class="fas fa-plus"></i> Add Range
+                            </button>
+                        </div>
+                        <div class="single-page-input">
+                            <label>Add Single Page:</label>
+                            <input type="number" id="singlePage" min="1" placeholder="7">
+                            <button type="button" class="btn-add-page" id="addPageBtn">
+                                <i class="fas fa-plus"></i> Add Page
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-ranges" id="previewRanges"></div>
+                    
+                    <div class="range-actions">
+                        <button type="button" class="btn-secondary" id="clearRangesBtn">
+                            <i class="fas fa-trash"></i> Clear All
+                        </button>
+                        <button type="button" class="btn-secondary" id="selectAllPagesBtn">
+                            <i class="fas fa-check-double"></i> Select All Pages (Each page = 1 PDF)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Equal Parts Configuration -->
+                <div class="config-panel" id="equalConfig" style="display: none;">
+                    <div class="config-header">
+                        <h3><i class="fas fa-balance-scale"></i> Split into Equal Parts</h3>
+                        <p>Divide your PDF into equal-sized chunks automatically</p>
+                    </div>
+                    <div class="input-group">
+                        <label for="numParts">Number of Parts</label>
+                        <input type="number" id="numParts" min="2" max="50" value="2">
+                        <small><i class="fas fa-info-circle"></i> Each part will contain approximately equal pages</small>
+                    </div>
+                    <div class="equal-preview" id="equalPreview">
+                        <p>Your PDF will be split into <strong>2</strong> equal parts</p>
+                    </div>
+                </div>
+
+                <!-- Size Configuration -->
+                <div class="config-panel" id="sizeConfig" style="display: none;">
+                    <div class="config-header">
+                        <h3><i class="fas fa-hdd"></i> Split by File Size</h3>
+                        <p>Perfect for email attachments or storage limits</p>
+                    </div>
+                    <div class="input-group">
+                        <label for="maxSize">Maximum Size per File (MB)</label>
+                        <input type="number" id="maxSize" min="1" max="100" value="5">
+                        <small><i class="fas fa-info-circle"></i> Files will be split to not exceed this size</small>
+                    </div>
+                </div>
+
+                <!-- Bookmarks Configuration -->
+                <div class="config-panel" id="bookmarksConfig" style="display: none;">
+                    <div class="config-header">
+                        <h3><i class="fas fa-bookmark"></i> Split by Bookmarks</h3>
+                        <p>Split at existing chapter or section markers</p>
+                    </div>
+                    <div class="bookmarks-list" id="bookmarksList">
+                        <p>Analyzing PDF for bookmarks...</p>
+                    </div>
+                </div>
+
+                <div class="advanced-options">
+                    <h4><i class="fas fa-sliders-h"></i> Advanced Options</h4>
+                    <div class="options-row">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="preserveQuality" checked>
+                            <span class="checkmark"></span>
+                            <span class="option-text">
+                                <strong>Preserve original quality</strong>
+                                <small>Keep the same image and text quality</small>
+                            </span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="addWatermark">
+                            <span class="checkmark"></span>
+                            <span class="option-text">
+                                <strong>Add watermark to split files</strong>
+                                <small>Adds "PDF Split Pro" watermark</small>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <section class="action-section" id="actionSection" style="display: none;">
+                <div class="section-header">
+                    <h2><i class="fas fa-play"></i> Ready to Split!</h2>
+                    <p>Everything looks good? Let's create your PDF files!</p>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn-primary btn-large" id="splitBtn">
+                        <i class="fas fa-cut"></i>
+                        <span class="btn-text">
+                            <strong>Split My PDF</strong>
+                            <small>Create separate files</small>
+                        </span>
+                    </button>
+                    <button class="btn-secondary" id="resetBtn">
+                        <i class="fas fa-redo"></i>
+                        Start Over
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="section-header">
+                    <h2><i class="fas fa-check-circle"></i> Success! Your PDFs are Ready</h2>
+                    <p>Download individual files or get them all in one ZIP archive</p>
+                </div>
+                <div class="results-grid" id="resultsGrid">
+                    <!-- Split results will be displayed here -->
+                </div>
+                <div class="download-actions">
+                    <button class="btn-primary btn-large" id="downloadAllBtn">
+                        <i class="fas fa-download"></i>
+                        <span class="btn-text">
+                            <strong>Download All as ZIP</strong>
+                            <small>Get all PDFs in one file</small>
+                        </span>
+                    </button>
+                    <div class="download-tip">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Tip: You can also download files individually by clicking the download button on each file</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Processing Modal -->
+        <div class="modal" id="processingModal" style="display: none;">
+            <div class="modal-content">
+                <div class="processing-animation">
+                    <div class="spinner"></div>
+                </div>
+                <h3>Processing PDF...</h3>
+                <p id="processingStatus">Initializing split operation...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="processingProgress"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Modal -->
+        <div class="modal" id="errorModal" style="display: none;">
+            <div class="modal-content">
+                <div class="error-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3>Error</h3>
+                <p id="errorMessage">An error occurred while processing your PDF.</p>
+                <button class="btn-primary" onclick="closeModal('errorModal')">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PDF Split Pro. All rights reserved.</p>
+        <p><i class="fas fa-heart" style="color: #ff6b6b;"></i> Designed & Developed by <strong>StudyCare & Computer Classes</strong></p>
+    </footer>
+
+    <!-- Include PDF.js library -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

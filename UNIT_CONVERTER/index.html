@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter - Study Care & Computer Classes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h1>Unit Converter</h1>
+                </div>
+                <p class="subtitle">Convert between different units with precision and ease</p>
+                <a href="../index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="converter-tabs">
+                <button class="tab-btn active" data-tab="length">
+                    <i class="fas fa-ruler"></i> Length
+                </button>
+                <button class="tab-btn" data-tab="weight">
+                    <i class="fas fa-weight"></i> Weight
+                </button>
+                <button class="tab-btn" data-tab="temperature">
+                    <i class="fas fa-thermometer-half"></i> Temperature
+                </button>
+                <button class="tab-btn" data-tab="area">
+                    <i class="fas fa-square"></i> Area
+                </button>
+                <button class="tab-btn" data-tab="volume">
+                    <i class="fas fa-cube"></i> Volume
+                </button>
+                <button class="tab-btn" data-tab="speed">
+                    <i class="fas fa-tachometer-alt"></i> Speed
+                </button>
+                <button class="tab-btn" data-tab="energy">
+                    <i class="fas fa-bolt"></i> Energy
+                </button>
+                <button class="tab-btn" data-tab="time">
+                    <i class="fas fa-clock"></i> Time
+                </button>
+            </div>
+
+            <div class="converter-container">
+                <!-- Length Converter -->
+                <div class="converter-panel active" id="length">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-ruler"></i> Length Converter</h2>
+                        <p>Convert between different length units</p>
+                    </div>
+                    <div class="converter-form">
+                        <div class="input-group">
+                            <label for="length-from">From:</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="length-input" placeholder="Enter value" step="any">
+                                <select id="length-from">
+                                    <option value="meter">Meter (m)</option>
+                                    <option value="kilometer">Kilometer (km)</option>
+                                    <option value="centimeter">Centimeter (cm)</option>
+                                    <option value="millimeter">Millimeter (mm)</option>
+                                    <option value="inch">Inch (in)</option>
+                                    <option value="foot">Foot (ft)</option>
+                                    <option value="yard">Yard (yd)</option>
+                                    <option value="mile">Mile (mi)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="swap-btn" onclick="swapUnits('length')">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="input-group">
+                            <label for="length-to">To:</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="length-output" placeholder="Result" readonly>
+                                <select id="length-to">
+                                    <option value="meter">Meter (m)</option>
+                                    <option value="kilometer">Kilometer (km)</option>
+                                    <option value="centimeter" selected>Centimeter (cm)</option>
+                                    <option value="millimeter">Millimeter (mm)</option>
+                                    <option value="inch">Inch (in)</option>
+                                    <option value="foot">Foot (ft)</option>
+                                    <option value="yard">Yard (yd)</option>
+                                    <option value="mile">Mile (mi)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weight Converter -->
+                <div class="converter-panel" id="weight">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-weight"></i> Weight Converter</h2>
+                        <p>Convert between different weight units</p>
+                    </div>
+                    <div class="converter-form">
+                        <div class="input-group">
+                            <label for="weight-from">From:</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="weight-input" placeholder="Enter value" step="any">
+                                <select id="weight-from">
+                                    <option value="kilogram">Kilogram (kg)</option>
+                                    <option value="gram">Gram (g)</option>
+                                    <option value="pound">Pound (lb)</option>
+                                    <option value="ounce">Ounce (oz)</option>
+                                    <option value="ton">Ton (t)</option>
+                                    <option value="stone">Stone (st)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="swap-btn" onclick="swapUnits('weight')">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="input-group">
+                            <label for="weight-to">To:</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="weight-output" placeholder="Result" readonly>
+                                <select id="weight-to">
+                                    <option value="kilogram">Kilogram (kg)</option>
+                                    <option value="gram" selected>Gram (g)</option>
+                                    <option value="pound">Pound (lb)</option>
+                                    <option value="ounce">Ounce (oz)</option>
+                                    <option value="ton">Ton (t)</option>
+                                    <option value="stone">Stone (st)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Temperature Converter -->
+                <div class="converter-panel" id="temperature">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-thermometer-half"></i> Temperature Converter</h2>
+                        <p>Convert between Celsius, Fahrenheit, and Kelvin</p>
+                    </div>
+                    <div class="converter-form">
+                        <div class="input-group">
+                            <label for="temp-from">From:</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="temp-input" placeholder="Enter value" step="any">
+                                <select id="temp-from">
+                                    <option value="celsius">Celsius (°C)</option>
+                                    <option value="fahrenheit">Fahrenheit (°F)</option>
+                                    <option value="kelvin">Kelvin (K)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="swap-btn" onclick="swapUnits('temperature')">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="input-group">
+                            <label for="temp-to">To:</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="temp-output" placeholder="Result" readonly>
+                                <select id="temp-to">
+                                    <option value="celsius">Celsius (°C)</option>
+                                    <option value="fahrenheit" selected>Fahrenheit (°F)</option>
+                                    <option value="kelvin">Kelvin (K)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Area Converter -->
+                <div class="converter-panel" id="area">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-square"></i> Area Converter</h2>
+                        <p>Convert between different area units</p>
+                    </div>
+                    <div class="converter-form">
+                        <div class="input-group">
+                            <label for="area-from">From:</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="area-input" placeholder="Enter value" step="any">
+                                <select id="area-from">
+                                    <option value="square_meter">Square Meter (m²)</option>
+                                    <option value="square_kilometer">Square Kilometer (km²)</option>
+                                    <option value="square_centimeter">Square Centimeter (cm²)</option>
+                                    <option value="square_foot">Square Foot (ft²)</option>
+                                    <option value="square_inch">Square Inch (in²)</option>
+                                    <option value="acre">Acre</option>
+                                    <option value="hectare">Hectare</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="swap-btn" onclick="swapUnits('area')">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="input-group">
+                            <label for="area-to">To:</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="area-output" placeholder="Result" readonly>
+                                <select id="area-to">
+                                    <option value="square_meter">Square Meter (m²)</option>
+                                    <option value="square_kilometer">Square Kilometer (km²)</option>
+                                    <option value="square_centimeter" selected>Square Centimeter (cm²)</option>
+                                    <option value="square_foot">Square Foot (ft²)</option>
+                                    <option value="square_inch">Square Inch (in²)</option>
+                                    <option value="acre">Acre</option>
+                                    <option value="hectare">Hectare</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Volume Converter -->
+                <div class="converter-panel" id="volume">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-cube"></i> Volume Converter</h2>
+                        <p>Convert between different volume units</p>
+                    </div>
+                    <div class="converter-form">
+                        <div class="input-group">
+                            <label for="volume-from">From:</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="volume-input" placeholder="Enter value" step="any">
+                                <select id="volume-from">
+                                    <option value="liter">Liter (L)</option>
+                                    <option value="milliliter">Milliliter (mL)</option>
+                                    <option value="gallon">Gallon (gal)</option>
+                                    <option value="quart">Quart (qt)</option>
+                                    <option value="pint">Pint (pt)</option>
+                                    <option value="cup">Cup</option>
+                                    <option value="fluid_ounce">Fluid Ounce (fl oz)</option>
+                                    <option value="cubic_meter">Cubic Meter (m³)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="swap-btn" onclick="swapUnits('volume')">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="input-group">
+                            <label for="volume-to">To:</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="volume-output" placeholder="Result" readonly>
+                                <select id="volume-to">
+                                    <option value="liter">Liter (L)</option>
+                                    <option value="milliliter" selected>Milliliter (mL)</option>
+                                    <option value="gallon">Gallon (gal)</option>
+                                    <option value="quart">Quart (qt)</option>
+                                    <option value="pint">Pint (pt)</option>
+                                    <option value="cup">Cup</option>
+                                    <option value="fluid_ounce">Fluid Ounce (fl oz)</option>
+                                    <option value="cubic_meter">Cubic Meter (m³)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Speed Converter -->
+                <div class="converter-panel" id="speed">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-tachometer-alt"></i> Speed Converter</h2>
+                        <p>Convert between different speed units</p>
+                    </div>
+                    <div class="converter-form">
+                        <div class="input-group">
+                            <label for="speed-from">From:</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="speed-input" placeholder="Enter value" step="any">
+                                <select id="speed-from">
+                                    <option value="mps">Meters per Second (m/s)</option>
+                                    <option value="kmh">Kilometers per Hour (km/h)</option>
+                                    <option value="mph">Miles per Hour (mph)</option>
+                                    <option value="fps">Feet per Second (ft/s)</option>
+                                    <option value="knot">Knot</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="swap-btn" onclick="swapUnits('speed')">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="input-group">
+                            <label for="speed-to">To:</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="speed-output" placeholder="Result" readonly>
+                                <select id="speed-to">
+                                    <option value="mps">Meters per Second (m/s)</option>
+                                    <option value="kmh" selected>Kilometers per Hour (km/h)</option>
+                                    <option value="mph">Miles per Hour (mph)</option>
+                                    <option value="fps">Feet per Second (ft/s)</option>
+                                    <option value="knot">Knot</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Energy Converter -->
+                <div class="converter-panel" id="energy">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-bolt"></i> Energy Converter</h2>
+                        <p>Convert between different energy units</p>
+                    </div>
+                    <div class="converter-form">
+                        <div class="input-group">
+                            <label for="energy-from">From:</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="energy-input" placeholder="Enter value" step="any">
+                                <select id="energy-from">
+                                    <option value="joule">Joule (J)</option>
+                                    <option value="kilojoule">Kilojoule (kJ)</option>
+                                    <option value="calorie">Calorie (cal)</option>
+                                    <option value="kilocalorie">Kilocalorie (kcal)</option>
+                                    <option value="watt_hour">Watt Hour (Wh)</option>
+                                    <option value="kilowatt_hour">Kilowatt Hour (kWh)</option>
+                                    <option value="btu">BTU</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="swap-btn" onclick="swapUnits('energy')">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="input-group">
+                            <label for="energy-to">To:</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="energy-output" placeholder="Result" readonly>
+                                <select id="energy-to">
+                                    <option value="joule">Joule (J)</option>
+                                    <option value="kilojoule" selected>Kilojoule (kJ)</option>
+                                    <option value="calorie">Calorie (cal)</option>
+                                    <option value="kilocalorie">Kilocalorie (kcal)</option>
+                                    <option value="watt_hour">Watt Hour (Wh)</option>
+                                    <option value="kilowatt_hour">Kilowatt Hour (kWh)</option>
+                                    <option value="btu">BTU</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Time Converter -->
+                <div class="converter-panel" id="time">
+                    <div class="panel-header">
+                        <h2><i class="fas fa-clock"></i> Time Converter</h2>
+                        <p>Convert between different time units</p>
+                    </div>
+                    <div class="converter-form">
+                        <div class="input-group">
+                            <label for="time-from">From:</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="time-input" placeholder="Enter value" step="any">
+                                <select id="time-from">
+                                    <option value="second">Second (s)</option>
+                                    <option value="minute">Minute (min)</option>
+                                    <option value="hour">Hour (h)</option>
+                                    <option value="day">Day</option>
+                                    <option value="week">Week</option>
+                                    <option value="month">Month</option>
+                                    <option value="year">Year</option>
+                                    <option value="millisecond">Millisecond (ms)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="swap-btn" onclick="swapUnits('time')">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="input-group">
+                            <label for="time-to">To:</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="time-output" placeholder="Result" readonly>
+                                <select id="time-to">
+                                    <option value="second">Second (s)</option>
+                                    <option value="minute" selected>Minute (min)</option>
+                                    <option value="hour">Hour (h)</option>
+                                    <option value="day">Day</option>
+                                    <option value="week">Week</option>
+                                    <option value="month">Month</option>
+                                    <option value="year">Year</option>
+                                    <option value="millisecond">Millisecond (ms)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn clear-btn" onclick="clearAll()">
+                    <i class="fas fa-trash"></i> Clear All
+                </button>
+                <button class="btn copy-btn" onclick="copyResult()">
+                    <i class="fas fa-copy"></i> Copy Result
+                </button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Study Care & Computer Classes - Unit Converter Tool</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

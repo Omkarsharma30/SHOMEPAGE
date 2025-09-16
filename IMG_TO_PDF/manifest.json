@@ -1,0 +1,115 @@
+{
+  "name": "IMG to PDF Converter",
+  "short_name": "IMG2PDF",
+  "description": "Advanced image to PDF converter with modern features and offline support",
+  "version": "1.0.0",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#3498db",
+  "background_color": "#ffffff",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["utilities", "productivity", "photo"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iOCIgZmlsbD0iIzM0OThkYiIvPgo8cGF0aCBkPSJNMTIgMTZoMjR2MTZIMTJWMTZ6IiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjIiLz4KPHA+YXRoIGQ9Ik0xNiAyMGgxNnY4SDE2VjIweiIgZmlsbD0id2hpdGUiLz4KPHA+YXRoIGQ9Ik0yMCAyNGg4djRoLThWMjR6IiBmaWxsPSIjMzQ5OGRiIi8+Cjx0ZXh0IHg9IjI0IiB5PSIzOCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QREY8L3RleHQ+Cjwvc3ZnPgo=",
+      "sizes": "48x48",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByeD0iMTYiIGZpbGw9IiMzNDk4ZGIiLz4KPHA+YXRoIGQ9Ik0yNCAzMmg0OHYzMkgyNFYzMnoiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMiIvPgo8cGF0aCBkPSJNMzIgNDBoMzJ2MTZIMzJWNDB6IiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNDAgNDhoMTZ2OEg0MFY0OHoiIGZpbGw9IiMzNDk4ZGIiLz4KPHRLEHT0IHg9IjQ4IiB5PSI3NiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UERGPC90ZXh0Pgo8L3N2Zz4K",
+      "sizes": "96x96",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMzIiIGZpbGw9IiMzNDk4ZGIiLz4KPHA+YXRoIGQ9Ik00OCA2NGg5NnY2NEg0OFY2NHoiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMiIvPgo8cGF0aCBkPSJNNjQgODBoNjR2MzJINjRWODB6IiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNODAgOTZoMzJ2MTZIODBWOTZ6IiBmaWxsPSIjMzQ5OGRiIi8+Cjx0ZXh0IHg9Ijk2IiB5PSIxNTIiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzMiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlBERjwvdGV4dD4KPC9zdmc+Cg==",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iODQiIGZpbGw9IiMzNDk4ZGIiLz4KPHA+YXRoIGQ9Ik0xMjggMTcwaDE3djE3MEgxMjhWMTcweiIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC4yIi8+CjxwYXRoIGQ9Ik0xNzAgMjEzaDI3djE4MEgxNzBWMjEzeiIgZmlsbD0id2hpdGUiLz4KPHA+YXRoIGQ9Ik0yMTMgMjU2aDg2djg2SDIxM1YyNTZ6IiBmaWxsPSIjMzQ5OGRiIi8+Cjx0ZXh0IHg9IjI1NiIgeT0iNDA0IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iODQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QREY8L3RleHQ+Cjwvc3ZnPgo=",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Quick Convert",
+      "short_name": "Convert",
+      "description": "Quickly convert images to PDF",
+      "url": "/?action=convert",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByeD0iMTYiIGZpbGw9IiMyN2FlNjAiLz4KPHA+YXRoIGQ9Ik00OCAwTDY0IDMySDMyTDQ4IDB6IiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "short_name": "Settings",
+      "description": "Adjust conversion settings",
+      "url": "/?action=settings",
+      "icons": [
+        {
+          "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiByeD0iMTYiIGZpbGw9IiM2YzU3ZDMiLz4KPGNpcmNsZSBjeD0iNDgiIGN5PSI0OCIgcj0iMTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4K",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "features": [
+    "Cross Platform",
+    "Background Sync",
+    "Offline Support",
+    "Image Compression",
+    "Batch Processing",
+    "Custom Page Sizes",
+    "Watermark Support",
+    "PDF Optimization"
+  ],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHZpZXdCb3g9IjAgMCAxMjgwIDcyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEyODAiIGhlaWdodD0iNzIwIiBmaWxsPSIjZjhmOWZhIi8+CjxyZWN0IHg9IjY0IiB5PSI2NCIgd2lkdGg9IjExNTIiIGhlaWdodD0iNTkyIiByeD0iMTYiIGZpbGw9IndoaXRlIiBzdHJva2U9IiNlMWU1ZTkiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSI2NDAiIHk9IjM2MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQ4IiBmaWxsPSIjMzc0MTUxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5JTUcgdG8gUERGIENvbnZlcnRlcjwvdGV4dD4KPC9zdmc+Cg==",
+      "sizes": "1280x720",
+      "type": "image/svg+xml",
+      "form_factor": "wide",
+      "label": "Main interface of IMG to PDF Converter"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://img-to-pdf-converter.example.com"
+    }
+  ],
+  "prefer_related_applications": false,
+  "protocol_handlers": [
+    {
+      "protocol": "web+img2pdf",
+      "url": "/?action=convert&source=%s"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "image/png": [".png"],
+        "image/jpeg": [".jpg", ".jpeg"],
+        "image/gif": [".gif"],
+        "image/webp": [".webp"],
+        "image/bmp": [".bmp"],
+        "image/tiff": [".tiff", ".tif"]
+      }
+    }
+  ]
+}

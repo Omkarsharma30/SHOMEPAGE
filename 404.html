@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page not found - Study Care & Computer Classes. Find your way back to our educational tools and computer courses.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="404 - Page Not Found | Study Care & Computer Classes">
+    <meta property="og:description" content="Oops! The page you're looking for doesn't exist. Explore our educational tools and computer courses instead.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://studycarencomputerclasses.space/404.html">
+    
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
+    <title>404 - Page Not Found | Study Care & Computer Classes</title>
+    
+    <!-- Load main stylesheet -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    
+    <!-- Font Awesome loaded asynchronously -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <style>
+        /* Critical CSS for immediate rendering */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .error-content {
+            max-width: 700px;
+            animation: fadeInUp 1s ease-out;
+            z-index: 10;
+            position: relative;
+        }
+
+        .error-code {
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 900;
+            margin: 0 0 20px 0;
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: glow 3s ease-in-out infinite alternate, gradientShift 4s ease infinite;
+            letter-spacing: -0.02em;
+        }
+
+        @keyframes glow {
+            from { 
+                filter: brightness(1) drop-shadow(0 0 20px rgba(240, 147, 251, 0.5)); 
+            }
+            to { 
+                filter: brightness(1.3) drop-shadow(0 0 40px rgba(240, 147, 251, 0.8)); 
+            }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .error-title {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin: 20px 0 15px;
+            font-weight: 700;
+            opacity: 0;
+            animation: slideInLeft 1s ease-out 0.3s forwards;
+        }
+
+        .error-message {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 40px;
+            opacity: 0;
+            line-height: 1.7;
+            animation: slideInRight 1s ease-out 0.6s forwards;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .breadcrumb-nav {
+            margin: 20px 0 30px;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 1s ease-out 0.9s both;
+        }
+
+        .breadcrumb-nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin: 0 5px;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb-nav a:hover {
+            color: #f1c40f;
+        }
+
+        .breadcrumb-nav .separator {
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0 8px;
+        }
+
+        .search-container {
+            margin: 30px 0 40px;
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+            animation: scaleIn 1s ease-out 1.2s both;
+        }
+
+        .search-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 18px 55px 18px 25px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .search-box:focus {
+            border-color: #f1c40f;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.2);
+        }
+
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 8px;
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            border: none;
+            color: #2c3e50;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(241, 196, 15, 0.4);
+        }
+
+        .popular-tools {
+            margin: 30px 0;
+            animation: fadeIn 1s ease-out 1.5s both;
+        }
+
+        .popular-tools h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .tool-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .tool-chip {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .tool-chip:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #f1c40f;
+            transform: translateY(-2px);
+            color: #f1c40f;
+        }
+
+        .site-map {
+            margin: 40px 0;
+            animation: fadeIn 1s ease-out 1.8s both;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .site-map h3 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+
+        .map-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 0 auto;
+        }
+
+        .map-category {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+        }
+
+        .map-category:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .map-category h4 {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #f1c40f;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .map-category h4 i {
+            font-size: 1.1rem;
+        }
+
+        .map-category ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .map-category li {
+            margin-bottom: 8px;
+        }
+
+        .map-category a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .map-category a::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .map-category a:hover {
+            color: #f1c40f;
+            transform: translateX(5px);
+        }
+
+        .map-category a:hover::before {
+            opacity: 1;
+            transform: translateX(3px);
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            animation: slideInUp 1s ease-out 1.8s both;
+        }
+
+        .error-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .error-btn:hover::before {
+            left: 100%;
+        }
+
+        .error-btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .error-btn.primary {
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .error-btn.secondary {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .error-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.08;
+            animation: float 8s ease-in-out infinite;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .shape:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+            font-size: 4rem;
+        }
+
+        .shape:nth-child(2) {
+            top: 70%;
+            right: 15%;
+            animation-delay: 3s;
+            font-size: 3rem;
+        }
+
+        .shape:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 6s;
+            font-size: 3.5rem;
+        }
+
+        .shape:nth-child(4) {
+            top: 40%;
+            right: 30%;
+            animation-delay: 2s;
+            font-size: 2.5rem;
+        }
+
+        .shape:nth-child(5) {
+            top: 25%;
+            left: 70%;
+            animation-delay: 5s;
+            font-size: 3rem;
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1); 
+            }
+            25% { 
+                transform: translateY(-30px) rotate(90deg) scale(1.1); 
+            }
+            50% { 
+                transform: translateY(-20px) rotate(180deg) scale(0.9); 
+            }
+            75% { 
+                transform: translateY(-35px) rotate(270deg) scale(1.05); 
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Improved responsive design */
+        @media (max-width: 768px) {
+            .error-container {
+                padding: 15px;
+            }
+            
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .error-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .tool-chips {
+                gap: 8px;
+            }
+
+            .tool-chip {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .search-container {
+                max-width: 100%;
+            }
+
+            .map-categories {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .map-category {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .breadcrumb-nav {
+                padding: 12px 20px;
+                font-size: 0.85rem;
+            }
+
+            .shape {
+                opacity: 0.05;
+            }
+
+            .site-map {
+                margin: 30px 0;
+            }
+
+            .map-category a {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .error-container {
+                background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            }
+        }
+
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="floating-shapes">
+            <i class="fas fa-graduation-cap shape"></i>
+            <i class="fas fa-laptop-code shape"></i>
+            <i class="fas fa-book shape"></i>
+            <i class="fas fa-tools shape"></i>
+            <i class="fas fa-code shape"></i>
+        </div>
+        
+        <div class="error-content">
+            <!-- Breadcrumb Navigation -->
+            <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                <a href="index.html" aria-label="Home">🏠 Home</a>
+                <span class="separator">›</span>
+                <span>404 Error</span>
+            </nav>
+
+            <h1 class="error-code" role="heading" aria-level="1">404</h1>
+            <h2 class="error-title">Oops! Page Not Found</h2>
+            <p class="error-message">
+                The page you're looking for seems to have taken a study break! 
+                Don't worry, even the best students sometimes get lost in the digital world. 
+                Let's help you find what you're looking for.
+            </p>
+            
+            <!-- Search functionality -->
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <input 
+                        type="text" 
+                        class="search-box" 
+                        placeholder="Search for tools, courses, or topics..." 
+                        onkeypress="handleSearch(event)"
+                        aria-label="Search site content"
+                        autocomplete="off"
+                    >
+                    <button class="search-btn" onclick="performSearch()" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Popular tools quick access -->
+            <div class="popular-tools">
+                <h3>🔥 Popular Tools</h3>
+                <div class="tool-chips">
+                    <a href="PDF_MERGE/index.html" class="tool-chip">PDF Merge</a>
+                    <a href="PDF_SPLIT/index.html" class="tool-chip">PDF Split</a>
+                    <a href="PASSWORD_GENERATOR/index.html" class="tool-chip">Password Gen</a>
+                    <a href="qr/index.html" class="tool-chip">QR Code</a>
+                    <a href="COLOR_PICKER/index.html" class="tool-chip">Color Picker</a>
+                    <a href="UNIT_CONVERTER/index.html" class="tool-chip">Unit Converter</a>
+                    <a href="text_editor/index.html" class="tool-chip">Text Editor</a>
+                    <a href="image_merger/index.html" class="tool-chip">Image Merge</a>
+                </div>
+            </div>
+
+            <!-- Complete site map -->
+            <div class="site-map">
+                <h3>📋 Complete Site Map</h3>
+                <div class="map-categories">
+                    <div class="map-category">
+                        <h4><i class="fas fa-file-pdf"></i> PDF Tools</h4>
+                        <ul>
+                            <li><a href="PDF_MERGE/index.html">PDF Merge & Combine</a></li>
+                            <li><a href="PDF_SPLIT/index.html">PDF Split & Extract</a></li>
+                            <li><a href="PDF CONSTRUCTION/index.html">PDF Construction</a></li>
+                            <li><a href="PDF_PAGE_REMOVER/index.html">PDF Page Remover</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="map-category">
+                        <h4><i class="fas fa-image"></i> Image Tools</h4>
+                        <ul>
+                            <li><a href="image_merger/index.html">Image Merger</a></li>
+                            <li><a href="IMG_TO_PDF/index.html">Image to PDF</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="map-category">
+                        <h4><i class="fas fa-text-width"></i> Text Tools</h4>
+                        <ul>
+                            <li><a href="text_editor/index.html">Text Editor</a></li>
+                            <li><a href="word_counter/index.html">Word Counter</a></li>
+                            <li><a href="case_converter/index.html">Case Converter</a></li>
+                            <li><a href="code_formatter/index.html">Code Formatter</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="map-category">
+                        <h4><i class="fas fa-tools"></i> Utilities</h4>
+                        <ul>
+                            <li><a href="PASSWORD_GENERATOR/index.html">Password Generator</a></li>
+                            <li><a href="qr/index.html">QR Code Generator</a></li>
+                            <li><a href="COLOR_PICKER/index.html">Color Picker</a></li>
+                            <li><a href="UNIT_CONVERTER/index.html">Unit Converter</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Action buttons -->
+            <div class="error-actions">
+                <a href="index.html" class="error-btn primary" aria-label="Go to homepage">
+                    <i class="fas fa-home"></i>
+                    Go Home
+                </a>
+                <a href="index.html#tools" class="error-btn secondary" aria-label="Browse all tools">
+                    <i class="fas fa-tools"></i>
+                    Browse Tools
+                </a>
+                <a href="index.html#courses" class="error-btn secondary" aria-label="View courses">
+                    <i class="fas fa-graduation-cap"></i>
+                    View Courses
+                </a>
+                <a href="index.html#about" class="error-btn secondary" aria-label="About us">
+                    <i class="fas fa-info-circle"></i>
+                    About Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced search functionality with better mapping
+        const toolMapping = {
+            // PDF Tools
+            'pdf': ['PDF_MERGE/index.html', 'PDF_SPLIT/index.html'],
+            'merge': 'PDF_MERGE/index.html',
+            'split': 'PDF_SPLIT/index.html',
+            'combine': 'PDF_MERGE/index.html',
+            'join': 'PDF_MERGE/index.html',
+            'separate': 'PDF_SPLIT/index.html',
+            'divide': 'PDF_SPLIT/index.html',
+            'construction': 'PDF CONSTRUCTION/index.html',
+            'remove': 'PDF_PAGE_REMOVER/index.html',
+            'page': 'PDF_PAGE_REMOVER/index.html',
+            
+            // Image Tools
+            'image': 'image_merger/index.html',
+            'img': ['IMG_TO_PDF/index.html', 'image_merger/index.html'],
+            'photo': 'image_merger/index.html',
+            'picture': 'image_merger/index.html',
+            'convert': ['IMG_TO_PDF/index.html', 'UNIT_CONVERTER/index.html'],
+            
+            // Generators
+            'password': 'PASSWORD_GENERATOR/index.html',
+            'generator': 'PASSWORD_GENERATOR/index.html',
+            'generate': 'PASSWORD_GENERATOR/index.html',
+            'secure': 'PASSWORD_GENERATOR/index.html',
+            'random': 'PASSWORD_GENERATOR/index.html',
+            
+            // QR Code
+            'qr': 'qr/index.html',
+            'code': ['qr/index.html', 'code_formatter/index.html'],
+            'barcode': 'qr/index.html',
+            'scan': 'qr/index.html',
+            
+            // Text Tools
+            'text': ['text_editor/index.html', 'word_counter/index.html', 'case_converter/index.html'],
+            'editor': 'text_editor/index.html',
+            'edit': 'text_editor/index.html',
+            'word': 'word_counter/index.html',
+            'count': 'word_counter/index.html',
+            'counter': 'word_counter/index.html',
+            'case': 'case_converter/index.html',
+            'upper': 'case_converter/index.html',
+            'lower': 'case_converter/index.html',
+            'format': 'code_formatter/index.html',
+            'formatter': 'code_formatter/index.html',
+            
+            // Utilities
+            'color': 'COLOR_PICKER/index.html',
+            'picker': 'COLOR_PICKER/index.html',
+            'palette': 'COLOR_PICKER/index.html',
+            'unit': 'UNIT_CONVERTER/index.html',
+            'converter': ['UNIT_CONVERTER/index.html', 'case_converter/index.html'],
+            'measurement': 'UNIT_CONVERTER/index.html',
+            'calculate': 'UNIT_CONVERTER/index.html'
+        };
+
+        // Handle search on Enter key press
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        }
+
+        // Perform search functionality
+        function performSearch() {
+            const searchInput = document.querySelector('.search-box');
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            if (!searchTerm) {
+                showToast('Please enter a search term', 'warning');
+                return;
+            }
+
+            // Add loading state
+            searchInput.disabled = true;
+            const searchBtn = document.querySelector('.search-btn');
+            const originalBtnContent = searchBtn.innerHTML;
+            searchBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+            // Simulate search delay for better UX
+            setTimeout(() => {
+                const result = findBestMatch(searchTerm);
+                
+                if (result) {
+                    showToast(`Redirecting to ${result.name}...`, 'success');
+                    setTimeout(() => {
+                        window.location.href = result.url;
+                    }, 1000);
+                } else {
+                    showToast('No exact match found. Redirecting to tools page...', 'info');
+                    setTimeout(() => {
+                        window.location.href = 'index.html#tools';
+                    }, 1500);
+                }
+
+                // Reset search button
+                searchInput.disabled = false;
+                searchBtn.innerHTML = originalBtnContent;
+            }, 800);
+        }
+
+        // Find best match for search term
+        function findBestMatch(searchTerm) {
+            const words = searchTerm.split(' ');
+            const matches = [];
+
+            for (const word of words) {
+                if (toolMapping[word]) {
+                    const result = toolMapping[word];
+                    if (Array.isArray(result)) {
+                        matches.push(...result.map(url => ({ url, score: getToolName(url) })));
+                    } else {
+                        matches.push({ url: result, score: getToolName(result) });
+                    }
+                }
+            }
+
+            // Return the first match or null
+            if (matches.length > 0) {
+                return { url: matches[0].url, name: matches[0].score };
+            }
+
+            return null;
+        }
+
+        // Get readable tool name from URL
+        function getToolName(url) {
+            const folderName = url.split('/')[0];
+            return folderName.replace(/_/g, ' ').replace(/([A-Z])/g, ' $1').trim();
+        }
+
+        // Toast notification system
+        function showToast(message, type = 'info') {
+            // Remove existing toast
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.innerHTML = `
+                <i class="fas fa-${getToastIcon(type)}"></i>
+                <span>${message}</span>
+            `;
+
+            // Toast styles
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${getToastColor(type)};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-weight: 500;
+                animation: slideInRight 0.3s ease-out;
+                max-width: 300px;
+                word-wrap: break-word;
+            `;
+
+            document.body.appendChild(toast);
+
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                toast.style.animation = 'slideOutRight 0.3s ease-in';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function getToastIcon(type) {
+            const icons = {
+                success: 'check-circle',
+                warning: 'exclamation-triangle',
+                error: 'times-circle',
+                info: 'info-circle'
+            };
+            return icons[type] || 'info-circle';
+        }
+
+        function getToastColor(type) {
+            const colors = {
+                success: 'linear-gradient(135deg, #27ae60, #2ecc71)',
+                warning: 'linear-gradient(135deg, #f39c12, #e67e22)',
+                error: 'linear-gradient(135deg, #e74c3c, #c0392b)',
+                info: 'linear-gradient(135deg, #3498db, #2980b9)'
+            };
+            return colors[type] || colors.info;
+        }
+
+        // Enhanced interactive animations and effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add CSS for toast animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideInRight {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOutRight {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Animate shapes with random delays
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, index) => {
+                shape.style.animationDelay = `${Math.random() * 3}s`;
+                shape.style.animationDuration = `${6 + Math.random() * 4}s`;
+            });
+
+            // Interactive error code click effect
+            const errorCode = document.querySelector('.error-code');
+            let clickCount = 0;
+            
+            errorCode.addEventListener('click', function() {
+                clickCount++;
+                this.style.animation = 'none';
+                
+                // Easter egg: change gradient after 5 clicks
+                if (clickCount >= 5) {
+                    this.style.background = 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24)';
+                    this.style.backgroundSize = '400% 400%';
+                    clickCount = 0;
+                    showToast('🎉 You found the easter egg!', 'success');
+                }
+                
+                setTimeout(() => {
+                    this.style.animation = 'glow 3s ease-in-out infinite alternate, gradientShift 4s ease infinite';
+                }, 100);
+            });
+
+            // Add hover effects to tool chips
+            const toolChips = document.querySelectorAll('.tool-chip');
+            toolChips.forEach(chip => {
+                chip.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.05)';
+                });
+                
+                chip.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                // Press 'H' to go home
+                if (e.key.toLowerCase() === 'h' && !e.ctrlKey && !e.metaKey) {
+                    const searchBox = document.querySelector('.search-box');
+                    if (document.activeElement !== searchBox) {
+                        window.location.href = 'index.html';
+                    }
+                }
+                
+                // Press 'T' to browse tools
+                if (e.key.toLowerCase() === 't' && !e.ctrlKey && !e.metaKey) {
+                    const searchBox = document.querySelector('.search-box');
+                    if (document.activeElement !== searchBox) {
+                        window.location.href = 'index.html#tools';
+                    }
+                }
+                
+                // Press '/' to focus search
+                if (e.key === '/' && !e.ctrlKey && !e.metaKey) {
+                    e.preventDefault();
+                    document.querySelector('.search-box').focus();
+                }
+            });
+
+            // Show keyboard shortcuts hint
+            setTimeout(() => {
+                showToast('💡 Tip: Press H for Home, T for Tools, / to search', 'info');
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

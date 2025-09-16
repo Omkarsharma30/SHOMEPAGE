@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Merger - Combine Multiple PDFs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-file-pdf"></i>
+                <h1>PDF Merger</h1>
+            </div>
+            <p class="subtitle">Combine multiple PDF files into one document</p>
+        </header>
+
+        <main class="main-content">
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Drop PDF files here or click to browse</h3>
+                    <p>Select multiple PDF files to merge them into one</p>
+                    <input type="file" id="fileInput" multiple accept=".pdf" hidden>
+                    <div class="upload-buttons">
+                        <button class="browse-btn" id="browseBtn">
+                            <i class="fas fa-folder-open"></i>
+                            Browse Files
+                        </button>
+                        <button class="quick-select-btn" id="quickSelectBtn">
+                            <i class="fas fa-bolt"></i>
+                            Quick Select
+                        </button>
+                    </div>
+                    <div class="upload-info">
+                        <small><i class="fas fa-info-circle"></i> Supports: PDF files only • Max: No limit • Processing: Client-side</small>
+                    </div>
+                </div>
+                
+                <!-- Quick Selection Panel -->
+                <div class="quick-selection-panel" id="quickSelectionPanel" style="display: none;">
+                    <div class="panel-header">
+                        <h4><i class="fas fa-lightning-bolt"></i> Quick PDF Selection</h4>
+                        <button class="close-quick-btn" id="closeQuickBtn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="quick-options">
+                        <div class="quick-option" id="selectFromFolder">
+                            <div class="option-icon">
+                                <i class="fas fa-folder"></i>
+                            </div>
+                            <div class="option-content">
+                                <h5>Select from Folder</h5>
+                                <p>Choose all PDFs from a specific folder</p>
+                            </div>
+                            <div class="option-action">
+                                <button class="option-btn">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-option" id="selectRecent">
+                            <div class="option-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="option-content">
+                                <h5>Recent Files</h5>
+                                <p>Select from recently used PDF files</p>
+                            </div>
+                            <div class="option-action">
+                                <button class="option-btn">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-option" id="selectPattern">
+                            <div class="option-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="option-content">
+                                <h5>Pattern Match</h5>
+                                <p>Select files by name pattern or date</p>
+                            </div>
+                            <div class="option-action">
+                                <button class="option-btn">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="files-section" id="filesSection" style="display: none;">
+                <div class="section-header">
+                    <h3><i class="fas fa-list"></i> Selected Files</h3>
+                    <div class="header-controls">
+                        <button class="one-click-btn" id="oneClickSelectBtn">
+                            <i class="fas fa-magic"></i>
+                            One-Click Select
+                        </button>
+                        <button class="preview-all-btn" id="previewAllBtn">
+                            <i class="fas fa-eye"></i>
+                            Preview All
+                        </button>
+                        <button class="clear-all-btn" id="clearAllBtn">
+                            <i class="fas fa-trash"></i>
+                            Clear All
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- One-Click Selection Bar -->
+                <div class="one-click-bar" id="oneClickBar" style="display: none;">
+                    <div class="selection-presets">
+                        <button class="preset-btn" data-preset="all">
+                            <i class="fas fa-check-double"></i>
+                            Select All Pages
+                        </button>
+                        <button class="preset-btn" data-preset="odd">
+                            <i class="fas fa-sort-numeric-up"></i>
+                            Odd Pages Only
+                        </button>
+                        <button class="preset-btn" data-preset="even">
+                            <i class="fas fa-sort-numeric-down"></i>
+                            Even Pages Only
+                        </button>
+                        <button class="preset-btn" data-preset="first">
+                            <i class="fas fa-step-forward"></i>
+                            First Page Only
+                        </button>
+                        <button class="preset-btn" data-preset="last">
+                            <i class="fas fa-step-backward"></i>
+                            Last Page Only
+                        </button>
+                        <button class="preset-btn" data-preset="range">
+                            <i class="fas fa-sliders-h"></i>
+                            Custom Range
+                        </button>
+                    </div>
+                    
+                    <!-- Quick Range Input -->
+                    <div class="quick-range" id="quickRange" style="display: none;">
+                        <input type="text" id="quickRangeInput" placeholder="e.g., 1-5, 8, 10-12">
+                        <button class="apply-range-btn" id="applyRangeBtn">
+                            <i class="fas fa-check"></i>
+                            Apply
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="files-list" id="filesList"></div>
+                
+                <!-- Page Selection Options -->
+                <div class="page-selection-panel" id="pageSelectionPanel" style="display: none;">
+                    <h4><i class="fas fa-file-alt"></i> Page Selection Options</h4>
+                    <div class="selection-options">
+                        <label class="radio-option">
+                            <input type="radio" name="pageOption" value="all" checked>
+                            <span class="radio-custom"></span>
+                            <span>All Pages</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="pageOption" value="range">
+                            <span class="radio-custom"></span>
+                            <span>Page Range</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="pageOption" value="custom">
+                            <span class="radio-custom"></span>
+                            <span>Custom Selection</span>
+                        </label>
+                    </div>
+                    
+                    <div class="page-inputs" id="pageInputs" style="display: none;">
+                        <div class="input-group">
+                            <label>From Page:</label>
+                            <input type="number" id="fromPage" min="1" placeholder="1">
+                        </div>
+                        <div class="input-group">
+                            <label>To Page:</label>
+                            <input type="number" id="toPage" min="1" placeholder="Last">
+                        </div>
+                    </div>
+                    
+                    <div class="custom-pages" id="customPages" style="display: none;">
+                        <label>Page Numbers (comma separated):</label>
+                        <input type="text" id="customPageList" placeholder="e.g., 1,3,5-7,10">
+                        <small>Examples: 1,3,5 or 1-5,8,10-12</small>
+                    </div>
+                </div>
+                
+                <div class="merge-options">
+                    <div class="options-grid">
+                        <div class="option-card">
+                            <label class="checkbox-option">
+                                <input type="checkbox" id="addBookmarks" checked>
+                                <span class="checkbox-custom"></span>
+                                <span>Add Bookmarks</span>
+                            </label>
+                            <small>Create bookmarks for each merged file</small>
+                        </div>
+                        
+                        <div class="option-card">
+                            <label class="checkbox-option">
+                                <input type="checkbox" id="optimizeSize">
+                                <span class="checkbox-custom"></span>
+                                <span>Optimize Size</span>
+                            </label>
+                            <small>Compress images and optimize file size</small>
+                        </div>
+                        
+                        <div class="option-card">
+                            <label class="checkbox-option">
+                                <input type="checkbox" id="addPageNumbers">
+                                <span class="checkbox-custom"></span>
+                                <span>Add Page Numbers</span>
+                            </label>
+                            <small>Add page numbers to merged document</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="merge-controls">
+                    <button class="advanced-btn" id="advancedBtn">
+                        <i class="fas fa-cog"></i>
+                        Advanced Options
+                    </button>
+                    <button class="merge-btn" id="mergeBtn">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                        Merge PDFs
+                    </button>
+                </div>
+            </div>
+
+            <div class="progress-section" id="progressSection" style="display: none;">
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span>Merging PDFs...</span>
+                        <span id="progressText">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="result-card">
+                    <div class="result-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>PDF Merged Successfully!</h3>
+                    <p>Your PDFs have been combined into a single document.</p>
+                    <div class="result-actions">
+                        <button class="download-btn" id="downloadBtn">
+                            <i class="fas fa-download"></i>
+                            Download Merged PDF
+                        </button>
+                        <button class="new-merge-btn" id="newMergeBtn">
+                            <i class="fas fa-plus"></i>
+                            Merge More Files
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure & Private</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <span>Fast Processing</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Mobile Friendly</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <!-- PDF Preview Modal -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-eye"></i> PDF Preview</h3>
+                <button class="close-btn" id="closePreview">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="preview-controls">
+                    <button class="nav-btn" id="prevFile">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous File
+                    </button>
+                    <span class="file-info" id="currentFileInfo">File 1 of 3</span>
+                    <button class="nav-btn" id="nextFile">
+                        Next File
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="preview-container">
+                    <canvas id="pdfCanvas"></canvas>
+                    <div class="page-controls">
+                        <button class="page-btn" id="prevPage">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <span id="pageInfo">Page 1 of 5</span>
+                        <button class="page-btn" id="nextPage">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="page-selection-preview">
+                    <h4>Select Pages for This File:</h4>
+                    <div class="page-thumbnails" id="pageThumbnails"></div>
+                    <div class="selection-summary">
+                        <span>Selected: <span id="selectedPagesCount">All pages</span></span>
+                        <button class="select-all-btn" id="selectAllPages">Select All</button>
+                        <button class="clear-selection-btn" id="clearSelection">Clear Selection</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advanced Options Modal -->
+    <div class="modal" id="advancedModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-cog"></i> Advanced Merge Options</h3>
+                <button class="close-btn" id="closeAdvanced">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="advanced-options">
+                    <div class="option-group">
+                        <h4>Document Properties</h4>
+                        <div class="input-row">
+                            <label>Title:</label>
+                            <input type="text" id="docTitle" placeholder="Merged PDF Document">
+                        </div>
+                        <div class="input-row">
+                            <label>Author:</label>
+                            <input type="text" id="docAuthor" placeholder="Your Name">
+                        </div>
+                        <div class="input-row">
+                            <label>Subject:</label>
+                            <input type="text" id="docSubject" placeholder="Document Subject">
+                        </div>
+                    </div>
+                    
+                    <div class="option-group">
+                        <h4>Page Layout</h4>
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="addHeaders">
+                            <span class="checkbox-custom"></span>
+                            <span>Add Headers with File Names</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="addFooters">
+                            <span class="checkbox-custom"></span>
+                            <span>Add Footers with Page Information</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="addSeparators">
+                            <span class="checkbox-custom"></span>
+                            <span>Add Separator Pages Between Files</span>
+                        </label>
+                    </div>
+                    
+                    <div class="option-group">
+                        <h4>Security</h4>
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="protectPdf">
+                            <span class="checkbox-custom"></span>
+                            <span>Password Protect PDF</span>
+                        </label>
+                        <div class="password-options" id="passwordOptions" style="display: none;">
+                            <input type="password" id="pdfPassword" placeholder="Enter password">
+                            <small>Password will be required to open the merged PDF</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="save-options-btn" id="saveOptions">
+                        <i class="fas fa-save"></i>
+                        Save Options
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF-lib library -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <!-- PDF.js for rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        // Fallback for PDF-lib if CDN fails
+        if (typeof PDFLib === 'undefined') {
+            document.write('<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"><\/script>');
+        }
+        
+        // Set PDF.js worker
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        }
+    </script>
+    
+    <!-- Bug Reporting System -->
+    <link rel="stylesheet" href="../bug-report.css">
+    <script src="../bug-report.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

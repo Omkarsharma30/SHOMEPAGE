@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://studycarencomputerclasses.space/sitemap.xml
+
+# Disallow crawling of certain directories (if needed)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow all tools and educational content
+Allow: /PDF_MERGE/
+Allow: /PDF_SPLIT/
+Allow: /PASSWORD_GENERATOR/
+Allow: /qr/
+Allow: /text_editor/
+Allow: /COLOR_PICKER/
+Allow: /UNIT_CONVERTER/
+Allow: /image_merger/
+Allow: /IMG_TO_PDF/
+Allow: /word_counter/
+Allow: /case_converter/
+Allow: /code_formatter/
+Allow: /PDF_PAGE_REMOVER/
+
+# Crawl-delay (optional - adjust as needed)
+# Crawl-delay: 1

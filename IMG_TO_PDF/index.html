@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMG TO PDF  Pro v2.0 - Convert Images to PDF</title>
+    <meta name="description" content="Convert multiple images to PDF with advanced customization options. Secure, fast, and mobile-friendly image to PDF converter.">
+    <meta name="keywords" content="image to pdf, convert images, pdf converter, online tool, image converter">
+    <meta name="theme-color" content="#3498db">
+    <meta name="color-scheme" content="light dark">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iOCIgZmlsbD0iIzM0OThkYiIvPgo8cGF0aCBkPSJNMTIgMTZoMjR2MTZIMTJWMTZ6IiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjIiLz4KPHA+YXRoIGQ9Ik0xNiAyMGgxNnY4SDE2VjIweiIgZmlsbD0id2hpdGUiLz4KPHA+YXRoIGQ9Ik0yMCAyNGg4djRoLThWMjR6IiBmaWxsPSIjMzQ5OGRiIi8+Cjx0ZXh0IHg9IjI0IiB5PSIzOCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QREY8L3RleHQ+Cjwvc3ZnPgo=">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMzIiIGZpbGw9IiMzNDk4ZGIiLz4KPHA+YXRoIGQ9Ik00OCA2NGg5NnY2NEg0OFY2NHoiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMiIvPgo8cGF0aCBkPSJNNjQgODBoNjR2MzJINjRWODB6IiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNODAgOTZoMzJ2MTZIODBWOTZ6IiBmaWxsPSIjMzQ5OGRiIi8+Cjx0ZXh0IHg9Ijk2IiB5PSIxNTIiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzMiIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlBERjwvdGV4dD4KPC9zdmc+Cg==">
+    
+    <!-- iOS Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="IMG2PDF">
+    
+    <!-- Windows Meta Tags -->
+    <meta name="msapplication-TileColor" content="#3498db">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <header class="header">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-file-image"></i>
+                    <div class="logo-shine"></div>
+                </div>
+                <div class="logo-text">
+                    <h1>IMGTOPDF</h1>
+                    <span class="version">Pro v2.0</span>
+                </div>
+            </div>
+            <p>Convert multiple images to PDF with advanced customization options</p>
+            <div class="feature-badges">
+                <span class="badge badge-security">
+                    <i class="fas fa-shield-alt"></i> 
+                    <span>Secure & Private</span>
+                </span>
+                <span class="badge badge-speed">
+                    <i class="fas fa-bolt"></i> 
+                    <span>Lightning Fast</span>
+                </span>
+                <span class="badge badge-mobile">
+                    <i class="fas fa-mobile-alt"></i> 
+                    <span>Mobile Friendly</span>
+                </span>
+                <span class="badge badge-quality">
+                    <i class="fas fa-star"></i> 
+                    <span>Premium Quality</span>
+                </span>
+            </div>
+            <a href="../index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </header>
+
+        <!-- Upload Section -->
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-card">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Drop your images here</h3>
+                    <p>Supports JPG, PNG, GIF, WebP, BMP formats</p>
+                    <p class="upload-limit">Maximum 50 images • Max 10MB per image</p>
+                    <input type="file" id="imageInput" accept="image/*" multiple hidden aria-label="Select images to convert">
+                    <button class="upload-btn" onclick="document.getElementById('imageInput').click()" aria-label="Choose images to upload">
+                        <i class="fas fa-folder-open" aria-hidden="true"></i>
+                        Choose Images
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Panel -->
+        <div class="settings-panel" id="settingsPanel" style="display: none;">
+            <div class="settings-header">
+                <h3><i class="fas fa-cog" aria-hidden="true"></i> PDF Settings</h3>
+                <button class="toggle-settings" onclick="toggleAdvancedSettings()" aria-label="Toggle advanced settings">
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i> Advanced Options
+                </button>
+            </div>
+            
+            <div class="settings-grid">
+                <!-- Basic Settings -->
+                <div class="setting-group">
+                    <label for="pageSize">Page Size</label>
+                    <select id="pageSize">
+                        <option value="a4">A4 (210 × 297 mm)</option>
+                        <option value="letter">Letter (8.5 × 11 in)</option>
+                        <option value="a3">A3 (297 × 420 mm)</option>
+                        <option value="a5">A5 (148 × 210 mm)</option>
+                        <option value="legal">Legal (8.5 × 14 in)</option>
+                        <option value="custom">Custom Size</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label for="orientation">Orientation</label>
+                    <select id="orientation">
+                        <option value="portrait">Portrait</option>
+                        <option value="landscape">Landscape</option>
+                        <option value="auto">Auto (Fit Image)</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label for="imageQuality">Image Quality</label>
+                    <div class="quality-slider">
+                        <input type="range" id="imageQuality" min="10" max="100" value="80">
+                        <span id="qualityValue">80%</span>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label for="imagesPerPage">Images per Page</label>
+                    <select id="imagesPerPage">
+                        <option value="1">1 Image per Page</option>
+                        <option value="2">2 Images per Page</option>
+                        <option value="4">4 Images per Page</option>
+                        <option value="6">6 Images per Page</option>
+                        <option value="9">9 Images per Page</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Advanced Settings (Hidden by default) -->
+            <div class="advanced-settings" id="advancedSettings" style="display: none;">
+                <div class="settings-grid">
+                    <div class="setting-group">
+                        <label for="marginTop">Top Margin (mm)</label>
+                        <input type="number" id="marginTop" value="10" min="0" max="50">
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="marginBottom">Bottom Margin (mm)</label>
+                        <input type="number" id="marginBottom" value="10" min="0" max="50">
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="marginLeft">Left Margin (mm)</label>
+                        <input type="number" id="marginLeft" value="10" min="0" max="50">
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="marginRight">Right Margin (mm)</label>
+                        <input type="number" id="marginRight" value="10" min="0" max="50">
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="imageAlignment">Image Alignment</label>
+                        <select id="imageAlignment">
+                            <option value="center">Center</option>
+                            <option value="left">Left</option>
+                            <option value="right">Right</option>
+                            <option value="stretch">Stretch to Fit</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="backgroundColor">Background Color</label>
+                        <input type="color" id="backgroundColor" value="#ffffff">
+                    </div>
+
+                    <div class="setting-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="maintainAspectRatio" checked>
+                            <span class="checkmark"></span>
+                            Maintain Aspect Ratio
+                        </label>
+                    </div>
+
+                    <div class="setting-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="addBorder">
+                            <span class="checkmark"></span>
+                            Add Border to Images
+                        </label>
+                    </div>
+
+                    <div class="setting-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="autoOptimize" checked>
+                            <span class="checkmark"></span>
+                            Auto-Optimize Images
+                        </label>
+                    </div>
+
+                    <div class="setting-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="addWatermark">
+                            <span class="checkmark"></span>
+                            Add Watermark
+                        </label>
+                    </div>
+
+                    <div class="setting-group" id="watermarkSettings" style="display: none;">
+                        <label for="watermarkText">Watermark Text</label>
+                        <input type="text" id="watermarkText" placeholder="Enter watermark text">
+                    </div>
+
+                    <div class="setting-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="addPageNumbers">
+                            <span class="checkmark"></span>
+                            Add Page Numbers
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Custom Page Size (shown when custom is selected) -->
+                <div class="custom-size-settings" id="customSizeSettings" style="display: none;">
+                    <div class="settings-grid">
+                        <div class="setting-group">
+                            <label for="customWidth">Width (mm)</label>
+                            <input type="number" id="customWidth" value="210" min="50" max="500">
+                        </div>
+                        <div class="setting-group">
+                            <label for="customHeight">Height (mm)</label>
+                            <input type="number" id="customHeight" value="297" min="50" max="500">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Preview and Arrangement Section -->
+        <section class="preview-section" id="previewSection" style="display: none;">
+            <div class="preview-header">
+                <h3><i class="fas fa-images" aria-hidden="true"></i> Image Preview & Arrangement</h3>
+                <div class="preview-actions">
+                    <button class="action-btn" onclick="selectAllImages()" aria-label="Select all images">
+                        <i class="fas fa-check-square" aria-hidden="true"></i> Select All
+                    </button>
+                    <button class="action-btn" onclick="deselectAllImages()" aria-label="Deselect all images">
+                        <i class="fas fa-square" aria-hidden="true"></i> Deselect All
+                    </button>
+                    <button class="action-btn" onclick="removeSelectedImages()" aria-label="Remove selected images">
+                        <i class="fas fa-trash" aria-hidden="true"></i> Remove Selected
+                    </button>
+                    <button class="action-btn" onclick="addMoreImages()" aria-label="Add more images">
+                        <i class="fas fa-plus" aria-hidden="true"></i> Add More
+                    </button>
+                </div>
+            </div>
+
+            <div class="sort-options">
+                <label for="sortBy">Sort by:</label>
+                <select id="sortBy" onchange="sortImages()" aria-label="Sort images by">
+                    <option value="default">Upload Order</option>
+                    <option value="name">File Name</option>
+                    <option value="size">File Size</option>
+                    <option value="date">Date Modified</option>
+                </select>
+                <button class="sort-direction" onclick="toggleSortDirection()" title="Toggle Sort Direction" aria-label="Toggle sort direction">
+                    <i class="fas fa-sort-amount-down" id="sortIcon" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="image-grid" id="imageGrid" role="grid" aria-label="Image grid">
+                <!-- Images will be populated here dynamically -->
+            </div>
+
+            <div class="conversion-actions">
+                <div class="conversion-info">
+                    <span id="imageCount">0 images selected</span>
+                    <span id="estimatedSize">Estimated PDF size: 0 MB</span>
+                    <span id="performanceInfo" style="font-size: 0.75rem; color: var(--text-light);">Ready to convert</span>
+                </div>
+                <div class="conversion-controls">
+                    <button class="preview-btn" id="previewBtn" onclick="previewPDF()" style="display: none;" aria-label="Preview PDF">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                        Preview
+                    </button>
+                    <button class="convert-btn" id="convertBtn" onclick="convertToPDF()" disabled aria-label="Convert selected images to PDF">
+                        <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                        Convert to PDF
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section class="progress-section" id="progressSection" style="display: none;" role="status" aria-live="polite">
+            <div class="progress-card">
+                <div class="progress-header">
+                    <h3><i class="fas fa-cog fa-spin" aria-hidden="true"></i> Converting Images to PDF</h3>
+                    <span id="progressText" aria-label="Conversion progress">Preparing...</span>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-details">
+                    <span id="currentOperation">Initializing conversion...</span>
+                    <span id="timeRemaining">Calculating time...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Result Section -->
+        <section class="result-section" id="resultSection" style="display: none;">
+            <div class="result-card success">
+                <div class="result-icon">
+                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                </div>
+                <h3>PDF Created Successfully!</h3>
+                <div class="result-info">
+                    <div class="info-item">
+                        <span class="label">Total Images:</span>
+                        <span id="totalImages">0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">PDF Size:</span>
+                        <span id="pdfSize">0 MB</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Processing Time:</span>
+                        <span id="processingTime">0 seconds</span>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <a class="download-btn" id="downloadBtn" href="#" download aria-label="Download PDF file">
+                        <i class="fas fa-download" aria-hidden="true"></i>
+                        Download PDF
+                    </a>
+                    <button class="reset-btn" onclick="resetConverter()" aria-label="Reset converter to start over">
+                        <i class="fas fa-refresh" aria-hidden="true"></i>
+                        Convert Another
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PDF.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="script.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        // Register service worker for PWA functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async () => {
+                try {
+                    const registration = await navigator.serviceWorker.register('/sw.js');
+                    console.log('Service Worker registered successfully:', registration.scope);
+                    
+                    // Check for updates
+                    registration.addEventListener('updatefound', () => {
+                        const newWorker = registration.installing;
+                        if (newWorker) {
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // Show update notification
+                                    showUpdateNotification();
+                                }
+                            });
+                        }
+                    });
+                } catch (error) {
+                    console.error('Service Worker registration failed:', error);
+                }
+            });
+        }
+        
+        // Show app update notification
+        function showUpdateNotification() {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #2196F3;
+                color: white;
+                padding: 1rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 1000;
+                max-width: 300px;
+                animation: slideIn 0.3s ease-out;
+            `;
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <i class="fas fa-download"></i>
+                    <strong>App Update Available</strong>
+                </div>
+                <p style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">A new version is ready to install.</p>
+                <button onclick="location.reload()" style="background: white; color: #2196F3; border: none; padding: 0.25rem 0.5rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
+                    Update Now
+                </button>
+                <button onclick="this.parentElement.remove()" style="background: transparent; color: white; border: 1px solid white; padding: 0.25rem 0.5rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem; margin-left: 0.5rem;">
+                    Later
+                </button>
+            `;
+            document.body.appendChild(notification);
+            
+            // Auto-remove after 10 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 10000);
+        }
+        
+        // Add slide-in animation
+        if (!document.getElementById('updateAnimationStyle')) {
+            const style = document.createElement('style');
+            style.id = 'updateAnimationStyle';
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Handle app installation
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install button if not already installed
+            const installButton = document.createElement('button');
+            installButton.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #4CAF50;
+                color: white;
+                border: none;
+                padding: 0.75rem 1rem;
+                border-radius: 50px;
+                box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+                cursor: pointer;
+                font-size: 0.9rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                z-index: 1000;
+                transition: all 0.3s ease;
+            `;
+            installButton.innerHTML = '<i class="fas fa-download"></i> Install App';
+            installButton.onclick = async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    console.log(`User ${outcome} the A2HS prompt`);
+                    deferredPrompt = null;
+                    installButton.remove();
+                }
+            };
+            
+            installButton.addEventListener('mouseenter', () => {
+                installButton.style.transform = 'scale(1.05)';
+            });
+            
+            installButton.addEventListener('mouseleave', () => {
+                installButton.style.transform = 'scale(1)';
+            });
+            
+            document.body.appendChild(installButton);
+            
+            // Auto-hide after 30 seconds
+            setTimeout(() => {
+                if (installButton.parentElement) {
+                    installButton.remove();
+                }
+            }, 30000);
+        });
+        
+        // Handle successful installation
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA was installed');
+            // Hide install button if visible
+            const installButton = document.querySelector('button[style*="Install App"]');
+            if (installButton) {
+                installButton.remove();
+            }
+        });
+    </script>
+</body>
+</html>

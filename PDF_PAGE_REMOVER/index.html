@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Page Remover</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <header class="header">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <i class="fas fa-file-pdf"></i>
+                    <div class="logo-shine"></div>
+                </div>
+                <div class="logo-text">
+                    <h1>PDF Page Remover</h1>
+                    <span class="version">Pro v2.0</span>
+                </div>
+            </div>
+            <p>Upload a PDF and remove unwanted pages with professional precision</p>
+            <div class="feature-badges">
+                <span class="badge badge-security">
+                    <i class="fas fa-shield-alt"></i> 
+                    <span>Secure & Private</span>
+                </span>
+                <span class="badge badge-speed">
+                    <i class="fas fa-bolt"></i> 
+                    <span>Lightning Fast</span>
+                </span>
+                <span class="badge badge-mobile">
+                    <i class="fas fa-mobile-alt"></i> 
+                    <span>Mobile Friendly</span>
+                </span>
+                <span class="badge badge-quality">
+                    <i class="fas fa-star"></i> 
+                    <span>Premium Quality</span>
+                </span>
+            </div>
+        </header>
+
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-card">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <div class="upload-particles">
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                        </div>
+                    </div>
+                    <h3>Drop your PDF here or click to browse</h3>
+                    <p>Supports PDF files up to 50MB • Instant processing • 100% secure</p>
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                    <button class="btn btn-primary btn-large btn-glow" onclick="document.getElementById('fileInput').click()">
+                        <i class="fas fa-plus"></i> Choose PDF File
+                        <span class="btn-sparkle"></span>
+                    </button>
+                    <div class="upload-features">
+                        <div class="feature-item">
+                            <i class="fas fa-lock"></i>
+                            <span>100% Private - No Upload to Server</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Instant Processing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content" id="mainContent" style="display: none;">
+            <div class="pdf-viewer">
+                <div class="viewer-header">
+                    <div class="header-left">
+                        <h2><i class="fas fa-images"></i> PDF Pages</h2>
+                        <div class="view-controls">
+                            <button class="btn btn-sm btn-outline" id="selectAllBtn">
+                                <i class="fas fa-check-square"></i> Select All
+                            </button>
+                            <button class="btn btn-sm btn-outline" id="selectNoneBtn">
+                                <i class="fas fa-square"></i> Select None
+                            </button>
+                        </div>
+                    </div>
+                    <div class="file-info">
+                        <div class="file-details">
+                            <i class="fas fa-file-pdf"></i>
+                            <div>
+                                <span id="fileName"></span>
+                                <small id="fileSize"></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pages-grid" id="pagesGrid">
+                    <!-- PDF pages will be rendered here -->
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="remove-section">
+                    <h3>Remove pages</h3>
+                    <div class="info-box">
+                        <i class="fas fa-info-circle"></i>
+                        <p>Click on pages to remove from document. You can use "shift" key to set ranges.</p>
+                    </div>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="label">Total pages:</span>
+                            <span class="value" id="totalPages">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="label">Pages to remove:</span>
+                            <span class="value" id="pagesToRemoveCount">0</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="pageNumbers">Pages to remove:</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-list-ol input-icon"></i>
+                            <input type="text" id="pageNumbers" placeholder="e.g., 1,3,5-8" 
+                                   title="Enter page numbers separated by commas or ranges with dashes">
+                        </div>
+                        <small>Enter page numbers (e.g., 1,3,5-8)</small>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-danger btn-glow" id="removeButton" disabled>
+                            <i class="fas fa-trash"></i> Remove pages
+                            <span class="btn-sparkle"></span>
+                        </button>
+                        <button class="btn btn-secondary" id="resetButton">
+                            <i class="fas fa-undo"></i> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <div class="download-section" id="downloadSection" style="display: none;">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Processing Complete!</h3>
+                    <p>Pages have been removed successfully. Your file will be downloaded with "_STUDY_REMOVED" suffix.</p>
+                    <div class="download-info">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Filename: <strong id="downloadFileName"></strong></span>
+                    </div>
+                    <button class="btn btn-success btn-large btn-glow" id="downloadButton">
+                        <i class="fas fa-download"></i> Download PDF
+                        <span class="btn-sparkle"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-content">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Processing PDF...</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

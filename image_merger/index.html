@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Merge Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-images"></i> Image Merge Tool</h1>
+            <p>Combine multiple images into one with ease</p>
+        </header>
+
+        <main class="main">
+            <!-- Step 1: Image Upload -->
+            <section class="step" id="step1">
+                <div class="step-header">
+                    <span class="step-number">1</span>
+                    <h2>Select Images</h2>
+                    <p>Choose 2 or more images to merge (JPG, PNG, GIF supported)</p>
+                </div>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Drag & Drop Images Here</h3>
+                        <p>or <span class="browse-text">browse files</span></p>
+                        <input type="file" id="imageInput" accept="image/*" multiple>
+                    </div>
+                </div>
+
+                <div class="selected-images" id="selectedImages">
+                    <!-- Selected images will be displayed here -->
+                </div>
+            </section>
+
+            <!-- Step 2: Merge Options -->
+            <section class="step" id="step2" style="display: none;">
+                <div class="step-header">
+                    <span class="step-number">2</span>
+                    <h2>Choose Merge Layout</h2>
+                    <p>Select how you want to arrange your images</p>
+                </div>
+
+                <div class="merge-options">
+                    <div class="option" data-layout="horizontal">
+                        <div class="option-visual">
+                            <div class="layout-preview horizontal-preview">
+                                <div class="preview-box"></div>
+                                <div class="preview-box"></div>
+                            </div>
+                        </div>
+                        <h3>Horizontal</h3>
+                        <p>Side by side</p>
+                    </div>
+
+                    <div class="option" data-layout="vertical">
+                        <div class="option-visual">
+                            <div class="layout-preview vertical-preview">
+                                <div class="preview-box"></div>
+                                <div class="preview-box"></div>
+                            </div>
+                        </div>
+                        <h3>Vertical</h3>
+                        <p>Stacked</p>
+                    </div>
+
+                    <div class="option" data-layout="grid">
+                        <div class="option-visual">
+                            <div class="layout-preview grid-preview">
+                                <div class="preview-box"></div>
+                                <div class="preview-box"></div>
+                                <div class="preview-box"></div>
+                                <div class="preview-box"></div>
+                            </div>
+                        </div>
+                        <h3>Grid</h3>
+                        <p>Automatic grid</p>
+                    </div>
+                </div>
+
+                <div class="grid-settings" id="gridSettings" style="display: none;">
+                    <label for="gridCols">Grid Columns:</label>
+                    <select id="gridCols">
+                        <option value="2">2 columns</option>
+                        <option value="3">3 columns</option>
+                        <option value="4">4 columns</option>
+                        <option value="auto" selected>Auto</option>
+                    </select>
+                </div>
+
+                <div class="border-settings" id="borderSettings" style="display: none;">
+                    <h4><i class="fas fa-border-style"></i> Border & Spacing Options</h4>
+                    <div class="border-controls">
+                        <div class="control-group">
+                            <label for="borderWidth">Border/Spacing Width:</label>
+                            <div class="slider-container">
+                                <input type="range" id="borderWidth" min="0" max="50" value="5" step="1">
+                                <span id="borderWidthValue">5px</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="borderColor">Border/Background Color:</label>
+                            <div class="color-input-container">
+                                <input type="color" id="borderColor" value="#000000">
+                                <span class="color-preview" style="background: #000000;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quality-settings" id="qualitySettings" style="display: none;">
+                    <h4><i class="fas fa-cog"></i> Output Quality Settings</h4>
+                    <div class="quality-controls">
+                        <div class="control-group">
+                            <label for="outputFormat">Output Format:</label>
+                            <select id="outputFormat" title="Choose the output format for your merged image">
+                                <option value="png" selected>PNG (Best Quality, Larger Size)</option>
+                                <option value="jpeg">JPEG (Good Quality, Smaller Size)</option>
+                                <option value="webp">WebP (Modern Format, Best Compression)</option>
+                            </select>
+                        </div>
+                        <div class="control-group quality-control" style="display: none;">
+                            <label for="outputQuality">JPEG/WebP Quality:</label>
+                            <div class="slider-container">
+                                <input type="range" id="outputQuality" min="0.1" max="1" value="0.9" step="0.05" 
+                                       title="Higher values = better quality but larger file size">
+                                <span id="qualityValue">90%</span>
+                            </div>
+                            <small class="quality-hint">Lower values = smaller file size</small>
+                        </div>
+                        <div class="control-group file-size-control" style="display: none;">
+                            <label for="enableFileSizeTarget">
+                                <input type="checkbox" id="enableFileSizeTarget">
+                                Target File Size (KB):
+                            </label>
+                            <div class="file-size-container">
+                                <div class="slider-container">
+                                    <input type="range" id="targetFileSize" min="50" max="5000" value="500" step="50" 
+                                           disabled title="Set target file size in KB">
+                                    <span id="fileSizeValue">500 KB</span>
+                                </div>
+                                <div class="size-presets">
+                                    <button type="button" class="preset-btn" data-size="100">100 KB</button>
+                                    <button type="button" class="preset-btn" data-size="500">500 KB</button>
+                                    <button type="button" class="preset-btn" data-size="1000">1 MB</button>
+                                    <button type="button" class="preset-btn" data-size="2000">2 MB</button>
+                                </div>
+                                <small class="quality-hint">Quality will be automatically adjusted to meet target size</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="merge-btn" id="mergeBtn" disabled onclick="if(window.startMerging) window.startMerging();">
+                    <i class="fas fa-magic"></i>
+                    Merge Images
+                </button>
+            </section>
+
+            <!-- Step 3: Loading -->
+            <section class="step loading-step" id="loadingStep" style="display: none;">
+                <div class="loading-content">
+                    <div class="spinner"></div>
+                    <h3>Merging your images...</h3>
+                    <p>Please wait while we combine your images</p>
+                </div>
+            </section>
+
+            <!-- Step 4: Result -->
+            <section class="step" id="step3" style="display: none;">
+                <div class="step-header">
+                    <span class="step-number">3</span>
+                    <h2>Your Merged Image</h2>
+                    <p>Preview and download your combined image</p>
+                </div>
+
+                <div class="result-container">
+                    <div class="result-image">
+                        <canvas id="resultCanvas"></canvas>
+                        <div class="file-info">
+                            <span id="sizeEstimate">File size will be calculated after processing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button class="download-btn" id="downloadBtn" onclick="window.imageMergeTool && window.imageMergeTool.downloadImage()">
+                            <i class="fas fa-download"></i>
+                            Download Image
+                        </button>
+                        <button class="reset-btn" id="resetBtn" onclick="window.imageMergeTool && window.imageMergeTool.reset()">
+                            <i class="fas fa-redo"></i>
+                            Start Over
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Image Merge Tool. Created with ❤️</p>
+            <p class="designer-credit">Designed & Created by <strong>Omkar Sharma</strong></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
